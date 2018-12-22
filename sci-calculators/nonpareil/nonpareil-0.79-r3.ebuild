@@ -9,7 +9,7 @@ HOMEPAGE="http://nonpareil.brouhaha.com"
 
 SLOT="0"
 LICENSE=""
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND="sys-devel/flex
@@ -20,18 +20,31 @@ DEPEND="sys-devel/flex
 RDEPEND="x11-libs/gtk+
          dev-libs/glib
          dev-libs/libxml2
-         media-libs/libsdl"
+         media-libs/libsdl
+         kde-frameworks/oxygen-icons"
 
 
 src_unpack() {
    unpack ${A}
    cd "${S}"
+
+   einfo "Apply patch in ${FILESDIR}"; 
+   epatch "${FILESDIR}/nonpareil-0.79-r1.patch"
+   einfo "A=${A}"; 
+   einfo "D=${D}"; 
+   einfo "S=${S}"; 
+  
 }
 
 src_compile() {	
-   scons || die "scons compiled failed" 
+   einfo "Start to compile"; 
+   scons destdir="${D}" || die "scons compiled failed" 
+   einfo "Compilation done"; 
 }
 
 src_install() {
+   einfo "Start to install"; 
    scons destdir="${D}" install || die "scons install failed"
+   domenu ${FILESDIR}/nonpareil.desktop
+
 }
