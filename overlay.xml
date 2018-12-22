@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+<repo quality="experimental" status="unofficial">
+    <name>linurs</name>
+    <description>experimental linurs ebuilds on git repository</description>
+    <homepage>https://github.com/linurs/gentoooverlay</homepage>
+    <owner>
+        <email>urs@linurs.org</email>
+        <name>Urs Lindegger</name>
+    </owner>
+    <source type="git">git://github.com/linurs/gentoooverlay.git</source>
+    <source type="git">https://github.com/linurs/gentoooverlay.git</source>
+    <feed>https://github.com/feeds/linurs/commits/gentoooverlay/master</feed>
+</repo>
+</repositories>
