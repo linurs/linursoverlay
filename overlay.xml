@@ -2,15 +2,14 @@
 <!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
 <repositories xmlns="" version="1.0">
 <repo quality="experimental" status="unofficial">
-    <name>linursoverlay</name>
+    <name><![CDATA[linursoverlay]]</name>
     <description>experimental linurs ebuilds on git repository</description>
     <homepage>https://github.com/linurs/linursoverlay</homepage>
-    <owner>
+    <owner type="person">
         <email>urs@linurs.org</email>
-        <name>Urs Lindegger</name>
+        <name><![CDATA[Urs Lindegger]]</name>
     </owner>
     <source type="git">git://github.com/linurs/linursoverlay.git</source>
-    <source type="git">https://github.com/linurs/linursoverlay.git</source>
-    <feed>https://github.com/feeds/linurs/commits/linursoverlay/master</feed>
+    <feed>https://github.com/linurs/linursoverlay/commits/master.atom</feed>
 </repo>
 </repositories>
