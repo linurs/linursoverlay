@@ -2,15 +2,15 @@
 <!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
 <repositories xmlns="" version="1.0">
 <repo quality="experimental" status="unofficial">
-    <name>linurs</name>
+    <name>linursoverlay</name>
     <description>experimental linurs ebuilds on git repository</description>
-    <homepage>https://github.com/linurs/gentoooverlay</homepage>
+    <homepage>https://github.com/linurs/linursoverlay</homepage>
     <owner>
         <email>urs@linurs.org</email>
         <name>Urs Lindegger</name>
     </owner>
-    <source type="git">git://github.com/linurs/gentoooverlay.git</source>
-    <source type="git">https://github.com/linurs/gentoooverlay.git</source>
-    <feed>https://github.com/feeds/linurs/commits/gentoooverlay/master</feed>
+    <source type="git">git://github.com/linurs/linursoverlay.git</source>
+    <source type="git">https://github.com/linurs/linursoverlay.git</source>
+    <feed>https://github.com/feeds/linurs/commits/linursoverlay/master</feed>
 </repo>
 </repositories>
