@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Nonpareil
+Type=Application
+Comment=hp calculators
+Exec=/usr/local/bin/nonpareil
+TryExec=/usr/local/bin/nonpareil
+Icon=/usr/share/icons/oxygen/base/48x48/apps/accessories-calculator.png
+Categories=Office;
