@@ -4,7 +4,7 @@
 <repo quality="experimental" status="unofficial">
     <name><![CDATA[linursoverlay]]></name>
     <description>experimental linurs ebuilds on git repository</description>
-    <homepage>http://github.com/linurs/linursoverlay</homepage>
+    <homepage>https://github.com/linurs/linursoverlay</homepage>
     <owner type="person">
         <email>urs@linurs.org</email>
         <name><![CDATA[Urs Lindegger]]></name>
