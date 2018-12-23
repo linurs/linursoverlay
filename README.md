@@ -3,6 +3,10 @@
 Linusoverlay adds new ebuilds to Gentoo.
 It is a [Gentoo overlay repository](https://overlays.gentoo.org/) from [Linurs](https://www.linurs.org/)
 
+**emerge eselect-repository**
+
+**eselect repository add linursoverlay git https://github.com/linurs/linursoverlay.git**
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/linurs/linursoverlay/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
