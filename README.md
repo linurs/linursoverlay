@@ -3,10 +3,13 @@
 Linusoverlay adds new ebuilds to Gentoo.
 It is a [Gentoo overlay repository](https://overlays.gentoo.org/) from [Linurs](https://www.linurs.org/)
 
-It can be used in Gentoo Linux using layman:
-**layman -o https://raw.github.com/linurs/linursoverlay/master/repositories.xml -f -a linursoverlay**
+It can be added in different way to Gentoo, one way is:
 
-When installed via layman it will be found under **/var/lib/layman/linursoverlay**
+**emerge eselect-repository**
+
+**eselect repository add linursoverlay git https://github.com/linurs/linursoverlay.git**
+
+
 
 
 
