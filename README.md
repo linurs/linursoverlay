@@ -1,3 +1,15 @@
+## Linursoverlay
+
+Linusoverlay adds new ebuilds to Gentoo.
+It is a [Gentoo overlay repository](https://overlays.gentoo.org/) from [Linurs](https://www.linurs.org/)
+
+It can be used in Gentoo Linux using layman:
+**layman -o https://raw.github.com/linurs/linursoverlay/master/repositories.xml -f -a linursoverlay**
+
+When installed via layman it will be found under **/var/lib/layman/linursoverlay**
+
+
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/linurs/linursoverlay/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
