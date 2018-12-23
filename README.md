@@ -7,7 +7,7 @@ It is a [Gentoo overlay repository](https://overlays.gentoo.org/) from [Linurs](
 
 **eselect repository add linursoverlay git https://github.com/linurs/linursoverlay.git**
 
-then just use **emerge** to install the ebuilds or **emerge --sync** to update it 
+then just use **emerge** to install the ebuilds or **emerge --sync** to update 
 
 
 ## Welcome to GitHub Pages
