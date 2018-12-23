@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=serna-free-bin
+Type=Application
+Comment=Serna free is a WYSIWYG XML editor
+Exec=serna-free-bin
+TryExec=serna-free-bin
+Icon=/usr/share/pixmaps/SernaIcon48.png
+Categories=Office;

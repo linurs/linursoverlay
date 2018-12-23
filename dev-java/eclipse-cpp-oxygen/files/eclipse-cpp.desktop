@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=eclipse-cpp
+Icon=eclipse-cpp
+Exec=/opt/eclipse-cpp-oxygen-2/eclipse
+Categories=Development;
