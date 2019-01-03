@@ -38,13 +38,13 @@ src_unpack() {
 
 src_compile() {	
    einfo "Start to compile"; 
-   scons destdir="${D}" prefix=/usr/bin || die "scons compiled failed" 
+   scons destdir="${D}" prefix=/usr || die "scons compiled failed" 
    einfo "Compilation done"; 
 }
 
 src_install() {
    einfo "Start to install"; 
-   scons destdir="${D}" prefix=/usr/bin install || die "scons install failed"
+   scons destdir="${D}" prefix=/usr install || die "scons install failed"
    domenu ${FILESDIR}/nonpareil.desktop
 
 }
