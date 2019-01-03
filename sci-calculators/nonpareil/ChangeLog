@@ -1,3 +1,7 @@
+nonpareil-0.79-r4
+=================
+Scons installing in /usr/bin instead of /usr/local
+
 nonpareil-0.79-r3
 =================
 Scons sandbox error installing uasm outside sandbox during scons installation
