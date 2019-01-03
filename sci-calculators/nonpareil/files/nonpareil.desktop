@@ -2,7 +2,7 @@
 Name=Nonpareil
 Type=Application
 Comment=hp calculators
-Exec=/usr/local/bin/nonpareil
-TryExec=/usr/local/bin/nonpareil
+Exec=/usr/bin/nonpareil
+TryExec=/usr/bin/nonpareil
 Icon=/usr/share/icons/oxygen/base/48x48/apps/accessories-calculator.png
 Categories=Office;
