@@ -7,7 +7,7 @@ SRC_URI="http://www.linurs.org/download/${P}.tar.gz"
 HOMEPAGE="http://www.linurs.org"
 
 SLOT="0"
-LICENSE="as it is"
+LICENSE="GPL-3"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
 
