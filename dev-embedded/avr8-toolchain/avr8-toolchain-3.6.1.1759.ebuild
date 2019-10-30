@@ -19,19 +19,19 @@ RDEPEND=""
 DEPEND=""
 
 pkg_nofetch() {
-	einfo "Fetch restriction turned on, downloading needs to be done manually"
-	einfo "Download it from ${HOMEPAGE}"
-        einfo "Then copy ${SRC_URI} to /usr/portage/distfiles and restart emerge"
-
-  einfo "P=${P}" 
-  einfo "PN=${PN}" 
-  einfo "PV=${PV}" 
-  einfo "PR=${PR}" 
-  einfo "A=${A}" 
-  einfo "D=${D}" 
-  einfo "S=${S}" 
-  einfo "WORKDIR=${WORKDIR}"
-  einfo "FILESDIR=${FILESDIR}"
+  einfo "Fetch restriction turned on, downloading needs to be done manually"
+  einfo "Download it from ${HOMEPAGE}"
+  einfo "Then copy ${SRC_URI} to /usr/portage/distfiles and restart emerge"
+ # einfo ""
+ # einfo "P=${P}" 
+ # einfo "PN=${PN}" 
+ # einfo "PV=${PV}" 
+ # einfo "PR=${PR}" 
+ # einfo "A=${A}" 
+ # einfo "D=${D}" 
+ # einfo "S=${S}" 
+ # einfo "WORKDIR=${WORKDIR}"
+ # einfo "FILESDIR=${FILESDIR}"
 }
 
 src_unpack(){
