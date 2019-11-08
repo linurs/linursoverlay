@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=PrusaSlicer
+Icon=prusa-slicer
+Exec=/opt/prusaslicer-bin-xxx/prusa-slicer
+Categories=Graphics;
