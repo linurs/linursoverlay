@@ -2,5 +2,5 @@
 Type=Application
 Name=Slic3r
 Icon=Slic3r
-Exec=/opt/slic3r-bin-xxx/slic3r
+Exec=/opt/slic3r-bin-xxx/Slic3r
 Categories=Graphics;
