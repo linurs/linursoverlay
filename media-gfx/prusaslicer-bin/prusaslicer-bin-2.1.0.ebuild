@@ -45,6 +45,12 @@ src_install() {
  einfo "cp -r ${S} ${D}opt/ || die"
  cp -r ${S} ${D}opt/ || die	
 
+ # fix permissions
+ einfo "chmod ugo+x ${D}opt/${P}/prusa-slicer"
+ chmod ugo+x ${D}opt/${P}/prusa-slicer
+ einfo "chmod ugo+x ${D}opt/${P}/bin/prusa-slicer"
+ chmod ugo+x ${D}opt/${P}/bin/prusa-slicer
+
  # adds an picture to the icons
  einfo "doicon ${D}opt/${P}/resources/icons/PrusaSlicer.png"
  doicon ${D}opt/${P}/resources/icons/PrusaSlicer.png
@@ -52,8 +58,8 @@ src_install() {
  # create desktop file and add to menu  
  einfo "domenu ${FILESDIR}/prusaslicer.desktop"
  domenu ${FILESDIR}/prusaslicer.desktop
- einfo "sed -i 's/xxx/1.3.0/g' ${D}usr/share/applications/prusaslicer.desktop"
- #sed -i 's/xxx/1.3.0/g' ${D}usr/share/applications/prusaslicer.desktop
+ einfo "sed -i 's/xxx/2.1.0/g' ${D}usr/share/applications/prusaslicer.desktop"
+ sed -i 's/xxx/2.1.0/g' ${D}usr/share/applications/prusaslicer.desktop
 
 }
 
