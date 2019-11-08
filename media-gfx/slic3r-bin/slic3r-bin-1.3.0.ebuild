@@ -41,7 +41,7 @@ src_unpack(){
 src_install() {
  # Install slic3r in /opt
  dodir /opt/${P}
- mv ${S} ${D}opt || die	
+ cp -r ${S} ${D}opt || die	
 
  # adds an picture to the icons
  doicon ${D}opt/${P}/var/Slic3r.png
@@ -50,6 +50,9 @@ src_install() {
  domenu ${FILESDIR}/Slic3r.desktop
  sed -i 's/xxx/1.3.0/g' ${D}/usr/share/applications/Slic3r.desktop
 
+ # add the shell command
+ einfo "cp ${FILESDIR}/slic3r.sh ${D}opt/${P}"  
+ cp ${FILESDIR}/slic3r.sh ${D}opt/${P}
 
 }
 
