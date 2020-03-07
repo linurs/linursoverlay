@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /opt/slic3r-bin-1.3.0
+cd /opt/slic3r-bin-xxx
 ./Slic3r
