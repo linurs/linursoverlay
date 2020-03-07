@@ -1,4 +1,4 @@
-# Copyright 2019 linurs.org
+# Copyright 2020 linurs.org
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -7,7 +7,7 @@ inherit eutils fdo-mime gnome2-utils
 DESCRIPTION="G-code generator for 3D printers"
 HOMEPAGE="http://slic3r.org/"
 SRC_URI="${SRC_URI}
-         amd64?   ( https://dl.slic3r.org/linux/slic3r-1.3.0-linux-x64.tar.bz2 )
+         amd64?   ( https://dl.slic3r.org/dev/linux/slic3r-1.3.1-dev-54a31ee-linux-x64.tar.bz2 )
          "
 
 LICENSE="|| ( GPL-3 )"
@@ -48,12 +48,12 @@ src_install() {
 
  # create desktop file and add to menu  
  domenu ${FILESDIR}/Slic3r.desktop
- sed -i 's/xxx/1.3.0/g' ${D}/usr/share/applications/Slic3r.desktop
+ sed -i 's/xxx/1.3.1/g' ${D}/usr/share/applications/Slic3r.desktop
 
  # add the shell command
- einfo "cp ${FILESDIR}/slic3r.sh ${D}opt/${P}"  
+ einfo "cp ${FILESDIR}/slic3r.sh ${D}opt/${P}" 
  cp ${FILESDIR}/slic3r.sh ${D}opt/${P}
-
+ sed -i 's/xxx/1.3.1/g' ${D}opt/${P}/slic3r.sh 
 }
 
 # update the menu after emerge and unmerge
