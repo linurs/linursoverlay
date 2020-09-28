@@ -31,6 +31,7 @@ python_install_all() {
   doins RadioFE.png
   doins favicon.gif
   doins default.png
+  doins -r Channels
 
   dosym /usr/bin/RadioFE.py /usr/bin/RadioFE 
   doicon RadioFE.png
