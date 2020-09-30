@@ -23,7 +23,10 @@ IUSE=""
 
 DOCS=( README.md )
 
-DEPEND=">=media-video/mplayer-1.3.0"
+DEPEND="
+   >=media-video/mplayer-1.3.0
+   >=dev-python/pillow-7.2.0
+"
 
 python_install_all() {
   insinto /usr/share/RadioFE
