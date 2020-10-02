@@ -30,6 +30,7 @@ DEPEND="
 "
 
 python_install_all() {
+  doman RadioFE.1
   insinto /usr/share/RadioFE
   doins favicon.ico
   doins RadioFE.png
