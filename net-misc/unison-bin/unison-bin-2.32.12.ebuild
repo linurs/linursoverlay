@@ -22,7 +22,7 @@ SLOT="0"
 
 IUSE=""
 
-RDEPEND=">=x11-libs/pangox-compat-0.0.2-r1"
+RDEPEND=">=x11-libs/pangox-compat-0.0.2"
 DEPEND=""
 
 src_unpack(){
