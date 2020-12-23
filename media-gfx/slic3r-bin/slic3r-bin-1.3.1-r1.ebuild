@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI=5
-inherit eutils fdo-mime gnome2-utils
+inherit eutils 
 DESCRIPTION="G-code generator for 3D printers"
 HOMEPAGE="http://slic3r.org/"
 SRC_URI="${SRC_URI}
@@ -56,13 +56,3 @@ src_install() {
  sed -i 's/xxx/1.3.1/g' ${D}opt/${P}/slic3r.sh 
 }
 
-# update the menu after emerge and unmerge
-pkg_postinst() {
-	fdo-mime_desktop_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	fdo-mime_desktop_database_update
-	gnome2_icon_cache_update
-}
