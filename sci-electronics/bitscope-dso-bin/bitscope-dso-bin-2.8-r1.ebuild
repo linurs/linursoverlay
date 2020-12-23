@@ -3,12 +3,12 @@
 # $Header: $
 
 EAPI=5
-inherit eutils fdo-mime gnome2-utils
-DESCRIPTION="bitscope chart"
+inherit eutils 
+DESCRIPTION="bitscope dso"
 HOMEPAGE="http://www.bitscope.com/"
 SRC_URI="${SRC_URI}
-         x86?   ( http://bitscope.com/download/files/bitscope-chart_2.0.FK22M_i386.deb )
-         amd64? ( http://bitscope.com/download/files/bitscope-chart_2.0.FK22M_amd64.deb )"
+         x86?   ( http://bitscope.com/download/files/bitscope-dso_2.8.FE22H_i386.deb )
+         amd64? ( http://bitscope.com/download/files/bitscope-dso_2.8.FE22H_amd64.deb )"
 LICENSE=""
 
 SLOT="0"
@@ -44,23 +44,10 @@ src_install() {
  mv ${S} ${D}opt || die	
 
  # adds an picture to the icons
- doicon ${D}opt/${P}/usr/share/pixmaps/bitscope-chart.png
+ doicon ${D}opt/${P}/usr/share/pixmaps/bitscope-dso.png
  
  # fix the path inside the desktop file since it will be installed in opt
- sed -i 's/\/usr\/bin\/bitscope-chart/\/opt\/bitscope-chart-bin-2.0\/usr\/bin\/bitscope-chart/g' ${D}opt/${P}/usr/share/applications/bitscope-chart.desktop
- domenu ${D}opt/${P}/usr/share/applications/bitscope-chart.desktop
+ sed -i 's/\/usr\/bin\/bitscope-dso/\/opt\/bitscope-dso-bin-2.8\/usr\/bin\/bitscope-dso/g' ${D}opt/${P}/usr/share/applications/bitscope-dso.desktop
+ domenu ${D}opt/${P}/usr/share/applications/bitscope-dso.desktop
 
 }
-
-# update the menu after emerge and unmerge
-pkg_postinst() {
-	fdo-mime_desktop_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	fdo-mime_desktop_database_update
-	gnome2_icon_cache_update
-}
-
-
