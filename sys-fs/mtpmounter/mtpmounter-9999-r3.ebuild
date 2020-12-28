@@ -9,7 +9,7 @@ inherit distutils-r1
 
 
 if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="https://github.com/linurs/ftpmounter.git"
+	EGIT_REPO_URI="https://github.com/linurs/mtpmounter.git"
 	inherit git-r3
 	KEYWORDS=""
 else
@@ -22,21 +22,19 @@ HOMEPAGE="http://www.linurs.org"
 SLOT="0"
 LICENSE="GPL2"
 IUSE=""
-
-RDEPEND=">=net-fs/curlftpfs-0.9.2"
-
+RDEPEND="|| ( sys-fs/jmtpfs sys-fs/mtpfs sys-fs/simple-mtpfs sys-fs/go-mtpfs )"
 
 DOCS=( README.md )
 
 python_install_all() {
-  doman ftpmounter.1
-  insinto /usr/share/ftpmounter
+  doman mtpmounter.1
+  insinto /usr/share/mtpmounter
   doins favicon.ico
-  doins ftpmounter.png
+  doins mtpmounter.png
   doins favicon.gif
 
-  dosym /usr/bin/ftpmounter.py /usr/bin/ftpmounter 
-  doicon ftpmounter.png
-  domenu ftpmounter.desktop
+  dosym /usr/bin/mtpmounter.py /usr/bin/mtpmounter 
+  doicon mtpmounter.png
+  domenu mtpmounter.desktop
   distutils-r1_python_install_all
 }
