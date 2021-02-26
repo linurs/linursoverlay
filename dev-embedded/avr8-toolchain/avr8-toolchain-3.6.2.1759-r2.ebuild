@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-#inherit eutils fdo-mime gnome2-utils
+#PYTHON_COMPAT=( python{2_7} )
+#inherit python-r1
 DESCRIPTION="Atmel avr8 toolchain"
 HOMEPAGE="https://www.microchip.com/mplab/avr-support/avr-and-arm-toolchains-c-compilers"
 
@@ -16,7 +17,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND="=dev-lang/python-2.7.18-r5"
+#RDEPEND="=dev-lang/python-2.7.18-r6"
+RDEPEND="<dev-lang/python-3.0"
 DEPEND=""
 
 pkg_nofetch() {
