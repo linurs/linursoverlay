@@ -31,10 +31,17 @@ src_install() {
 	dodir /opt/${P}
 	mv "${S}" "${D}"opt || die
 
+        
+        
 	# adds an picture to the icons
 	doicon "${D}"opt/"${P}"/usr/share/pixmaps/bitscope-server.png
-	# fix the path inside the desktop file since it will be installed in opt
-	sed -i 's/\/usr\/bin\/bitscope-meter/\/opt\/bitscope-server-bin-1.0\/usr\/bin\/bitscope-server/g' "${D}"opt/"${P}"/usr/share/applications/bitscope-server.desktop
+
+        # fix desktop file
+        # fix wrong name
+        sed -i 's/DSO/Server/g' "${D}"opt/"${P}"/usr/share/applications/bitscope-server.desktop
+        sed -i 's/bitscope-dso/bitscope-server/g' "${D}"opt/"${P}"/usr/share/applications/bitscope-server.desktop
+      	# fix the path inside the desktop file since it will be installed in opt
+	sed -i 's/\/usr\/bin\/bitscope-server/\/opt\/bitscope-server-bin-1.0\/usr\/bin\/bitscope-server/g' "${D}"opt/"${P}"/usr/share/applications/bitscope-server.desktop
 	# remove the icon file extension
 	sed -i 's/.png//g' "${D}"opt/"${P}"/usr/share/applications/bitscope-server.desktop
 	# remove the deprecated value Application
