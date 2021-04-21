@@ -8,9 +8,6 @@ HOMEPAGE="https://eric-ide.python-projects.org/"
 SRC_URI="${SRC_URI} amd64? (
 	https://downloads.sourceforge.net/project/eric-ide/${PN}/stable/${PV}/${P}.tar.gz
 )"
-# watch out inconsistency with 20.01 and 20.1
-#https://downloads.sourceforge.net/project/eric-ide/eric6/stable/20.01/eric6-20.1.tar.gz
-#https://downloads.sourceforge.net/project/eric-ide/eric6/stable/20.1/eric6-20.1.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -24,16 +21,6 @@ src_unpack(){
 	if [ ${A} != "" ]; then
 		unpack ${A}
 	fi
-
-	einfo "P=${P}"
-	einfo "PN=${PN}"
-	einfo "PV=${PV}"
-	einfo "PR=${PR}"
-	einfo "A=${A}"
-	einfo "D=${D}"
-	einfo "S=${S}"
-	einfo "WORKDIR=${WORKDIR}"
-	einfo "FILESDIR=${FILESDIR}"
 }
 
 src_install() {
