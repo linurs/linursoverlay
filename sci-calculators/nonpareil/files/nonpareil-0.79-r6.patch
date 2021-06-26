@@ -1,0 +1,447 @@
+Only in nonpareil-0.79-r6: .sconsign.dblite
+diff --recursive --context nonpareil-0.79/README nonpareil-0.79-r6/README
+*** nonpareil-0.79/README	2008-08-24 02:37:34.000000000 +0200
+--- nonpareil-0.79-r6/README	2021-06-26 10:16:17.261201682 +0200
+***************
+*** 6,11 ****
+--- 6,14 ----
+  
+  News:
+  
++ Patch 2014-05-24 Urs Lindegger urs@linurs.org fixed scons warnings, png.h issues
++ Patch 2021-06-26 Urs Lindegger urs@linurs.org fixed linker error with multiple declaration of the pass variable
++ 
+  Release 0.79 removes the Voyager models pending a licensing update.
+  Note that the ROM images of the Voyager calculators as present in
+  earlier Nonpareil releases were never covered by the GPL.
+diff --recursive --context nonpareil-0.79/SConstruct nonpareil-0.79-r6/SConstruct
+*** nonpareil-0.79/SConstruct	2008-08-24 02:37:34.000000000 +0200
+--- nonpareil-0.79-r6/SConstruct	2021-06-25 15:39:27.957790171 +0200
+***************
+*** 20,25 ****
+--- 20,26 ----
+  
+  release = '0.79'  # should get from a file, and use only if a release option
+                    # is specified
++ # Patch 2014-05-24 Urs Lindegger urs@linurs.org fixed scons warnings
+  
+  conf_file = 'nonpareil.conf'
+  
+***************
+*** 27,47 ****
+  # Options
+  #-----------------------------------------------------------------------------
+  
+! opts = Options (conf_file)
+  
+! opts.AddOptions (EnumOption ('host',
+  			     help = 'host build platform',
+  			     allowed_values = ('posix', 'win32'),
+  			     default = 'posix',
+  			     ignorecase = 1),
+  
+! 		 EnumOption ('target',
+  			     help = 'execution target platform',
+  			     allowed_values = ('posix', 'win32'),
+  			     default = 'posix',
+  			     ignorecase = 1),
+  
+! 		 PathOption ('prefix',
+  			     'installation path prefix',
+  			     '/usr/local'),
+  
+--- 28,48 ----
+  # Options
+  #-----------------------------------------------------------------------------
+  
+! opts = Variables (conf_file)
+  
+! opts.AddVariables (EnumVariable ('host',
+  			     help = 'host build platform',
+  			     allowed_values = ('posix', 'win32'),
+  			     default = 'posix',
+  			     ignorecase = 1),
+  
+! 		 EnumVariable ('target',
+  			     help = 'execution target platform',
+  			     allowed_values = ('posix', 'win32'),
+  			     default = 'posix',
+  			     ignorecase = 1),
+  
+! 		 PathVariable ('prefix',
+  			     'installation path prefix',
+  			     '/usr/local'),
+  
+***************
+*** 59,83 ****
+  		  'installation virtual root directory (for packaging)',
+  		  ''),
+  
+! 		 BoolOption ('debug',
+  			     help = 'compile for debugging',
+  			     default = 1),
+  
+  		 # Feature switches:
+  
+! 		 BoolOption ('has_debugger_gui',
+  			     help = 'enable debugger GUI interface',
+  			     default = 0),
+  
+! 		 BoolOption ('has_debugger_cli',
+  			     help = 'enable debugger command-line interface',
+  			     default = 0),
+  
+! 		 BoolOption ('use_tcl',
+  			     help = 'use Tcl as debug command interpreter (only when debugger CLI is enabled)',
+  			     default = 1),  # only if has_debugger_cli
+  
+! 		 BoolOption ('use_readline',
+  			     help = 'use Readline library for command editing and history (only when debugger CLI is enabled)',
+  			     default = 1))  # only if has_debugger_cli
+  
+--- 60,84 ----
+  		  'installation virtual root directory (for packaging)',
+  		  ''),
+  
+! 		 BoolVariable ('debug',
+  			     help = 'compile for debugging',
+  			     default = 1),
+  
+  		 # Feature switches:
+  
+! 		 BoolVariable ('has_debugger_gui',
+  			     help = 'enable debugger GUI interface',
+  			     default = 0),
+  
+! 		 BoolVariable ('has_debugger_cli',
+  			     help = 'enable debugger command-line interface',
+  			     default = 0),
+  
+! 		 BoolVariable ('use_tcl',
+  			     help = 'use Tcl as debug command interpreter (only when debugger CLI is enabled)',
+  			     default = 1),  # only if has_debugger_cli
+  
+! 		 BoolVariable ('use_readline',
+  			     help = 'use Readline library for command editing and history (only when debugger CLI is enabled)',
+  			     default = 1))  # only if has_debugger_cli
+  
+***************
+*** 120,128 ****
+  
+      try:
+          os.mkdir (treedir)
+!     except OSError, (errnum, strerror):
+          if errnum != errno.EEXIST:
+!             print 'mkdir ', treedir, ':', strerror
+  
+      cmd = 'tar cf - '
+      #
+--- 121,130 ----
+  
+      try:
+          os.mkdir (treedir)
+!     except OSError as xxx_todo_changeme:
+!         (errnum, strerror) = xxx_todo_changeme.args
+          if errnum != errno.EEXIST:
+!             print('mkdir ', treedir, ':', strerror)
+  
+      cmd = 'tar cf - '
+      #
+***************
+*** 137,143 ****
+  
+  def tarballer (target, source, env):            
+      cmd = 'tar -czf ' + str (target[0]) +  ' ' + str(source[0])
+!     print 'running ', cmd, ' ... '
+      p = os.popen (cmd)
+      return p.close ()
+  
+--- 139,145 ----
+  
+  def tarballer (target, source, env):            
+      cmd = 'tar -czf ' + str (target[0]) +  ' ' + str(source[0])
+!     print('running ', cmd, ' ... ')
+      p = os.popen (cmd)
+      return p.close ()
+  
+***************
+*** 235,244 ****
+  # host platform code
+  #-----------------------------------------------------------------------------
+  
+! native_env = env.Copy ()
+  native_env ['build_target_only'] = 0
+  SConscript ('src/SConscript',
+!             build_dir = 'build/' + env ['host'],
+              duplicate = 0,
+  	    exports = {'build_env' : native_env,
+  		       'native_env' : env})
+--- 237,246 ----
+  # host platform code
+  #-----------------------------------------------------------------------------
+  
+! native_env = env.Clone ()
+  native_env ['build_target_only'] = 0
+  SConscript ('src/SConscript',
+!             variant_dir = 'build/' + env ['host'],
+              duplicate = 0,
+  	    exports = {'build_env' : native_env,
+  		       'native_env' : env})
+***************
+*** 248,254 ****
+  #-----------------------------------------------------------------------------
+  
+  SConscript ('asm/SConscript',
+! 	    build_dir='obj',
+  	    duplicate=0)
+  
+  #-----------------------------------------------------------------------------
+--- 250,256 ----
+  #-----------------------------------------------------------------------------
+  
+  SConscript ('asm/SConscript',
+! 	    variant_dir='obj',
+  	    duplicate=0)
+  
+  #-----------------------------------------------------------------------------
+***************
+*** 269,275 ****
+  #-----------------------------------------------------------------------------
+  
+  SConscript ('win32/dll/SConscript',
+! 	    build_dir = 'build/win32/dll',
+  	    duplicate = 0)
+  
+  #-----------------------------------------------------------------------------
+--- 271,277 ----
+  #-----------------------------------------------------------------------------
+  
+  SConscript ('win32/dll/SConscript',
+! 	    variant_dir = 'build/win32/dll',
+  	    duplicate = 0)
+  
+  #-----------------------------------------------------------------------------
+Only in nonpareil-0.79-r6/build: common
+Only in nonpareil-0.79-r6/build: posix
+Only in nonpareil-0.79-r6: nonpareil.conf
+Only in nonpareil-0.79-r6: obj
+diff --recursive --context nonpareil-0.79/src/SConscript nonpareil-0.79-r6/src/SConscript
+*** nonpareil-0.79/src/SConscript	2008-08-24 02:37:18.000000000 +0200
+--- nonpareil-0.79-r6/src/SConscript	2021-06-25 15:37:12.533148437 +0200
+***************
+*** 18,23 ****
+--- 18,25 ----
+  # the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+  # Boston, MA 02111, USA.
+  
++ # Patch 2014-05-24 Urs Lindegger urs@linurs.org fixed scons warnings
++ 
+  Import('build_env native_env')
+  Import('source_release_dir snapshot_dir')
+  
+***************
+*** 79,85 ****
+  state_io_objs = [build_env.Object(src) for src in state_io_srcs];
+  state_io_packages = "gtk+-2.0 gdk-2.0 gdk-pixbuf-2.0 glib-2.0 libxml-2.0"
+  
+! release_env = build_env.Copy (CPPDEFINES = [('NONPAREIL_RELEASE', build_env ['RELEASE'])])
+  common_objs.append (release_env.Object ('release.c'))
+  
+  build_env.ParseConfig(pkg_config_cmd + state_io_packages)
+--- 81,87 ----
+  state_io_objs = [build_env.Object(src) for src in state_io_srcs];
+  state_io_packages = "gtk+-2.0 gdk-2.0 gdk-pixbuf-2.0 glib-2.0 libxml-2.0"
+  
+! release_env = build_env.Clone (CPPDEFINES = [('NONPAREIL_RELEASE', build_env ['RELEASE'])])
+  common_objs.append (release_env.Object ('release.c'))
+  
+  build_env.ParseConfig(pkg_config_cmd + state_io_packages)
+***************
+*** 89,95 ****
+  #-----------------------------------------------------------------------------
+  
+  if build_env ['build_target_only'] == 0:
+!     str2png_env = build_env.Copy ()
+  
+      str2png_env.Append (CPPDEFINES = [('DEFAULT_PATH', 'image')])
+  
+--- 91,97 ----
+  #-----------------------------------------------------------------------------
+  
+  if build_env ['build_target_only'] == 0:
+!     str2png_env = build_env.Clone ()
+  
+      str2png_env.Append (CPPDEFINES = [('DEFAULT_PATH', 'image')])
+  
+***************
+*** 196,202 ****
+  #-----------------------------------------------------------------------------
+  
+  if not build_target_only:
+!     title_env = native_env.Copy (STR2PNG_STRING = 'NONPAREIL',
+                                   STR2PNG_OPTS = '-x 40 -y 44 -m 10')
+  
+      title_env.STR2PNG (target = 'nonpareil_title',
+--- 198,204 ----
+  #-----------------------------------------------------------------------------
+  
+  if not build_target_only:
+!     title_env = native_env.Clone (STR2PNG_STRING = 'NONPAREIL',
+                                   STR2PNG_OPTS = '-x 40 -y 44 -m 10')
+  
+      title_env.STR2PNG (target = 'nonpareil_title',
+***************
+*** 205,211 ****
+      native_env.PNG2C (target = '#build/common/nonpareil_title_png.c',
+                        source = 'nonpareil_title.png')
+              
+!     rgoose_env = native_env.Copy (STR2PNG_STRING = '.',
+                                    STR2PNG_OPTS = '-x 40 -y 44')
+  
+      rgoose_env.STR2PNG (target = 'rgoose',
+--- 207,213 ----
+      native_env.PNG2C (target = '#build/common/nonpareil_title_png.c',
+                        source = 'nonpareil_title.png')
+              
+!     rgoose_env = native_env.Clone (STR2PNG_STRING = '.',
+                                    STR2PNG_OPTS = '-x 40 -y 44')
+  
+      rgoose_env.STR2PNG (target = 'rgoose',
+***************
+*** 214,220 ****
+      native_env.PNG2C (target = '#build/common/rgoose_png.c',
+                        source = 'rgoose.png')
+              
+!     lgoose_env = native_env.Copy (STR2PNG_STRING = ',',
+                                    STR2PNG_OPTS = '-x 40 -y 44')
+  
+      lgoose_env.STR2PNG (target = 'lgoose',
+--- 216,222 ----
+      native_env.PNG2C (target = '#build/common/rgoose_png.c',
+                        source = 'rgoose.png')
+              
+!     lgoose_env = native_env.Clone (STR2PNG_STRING = ',',
+                                    STR2PNG_OPTS = '-x 40 -y 44')
+  
+      lgoose_env.STR2PNG (target = 'lgoose',
+***************
+*** 235,241 ****
+  # nonpareil
+  #-----------------------------------------------------------------------------
+  
+! nonpareil_env = build_env.Copy ()
+  
+  nonpareil_srcs = Split ("""proc.c glib_async_queue_source.c
+                             about.c goose.c pixbuf_util.c
+--- 237,243 ----
+  # nonpareil
+  #-----------------------------------------------------------------------------
+  
+! nonpareil_env = build_env.Clone ()
+  
+  nonpareil_srcs = Split ("""proc.c glib_async_queue_source.c
+                             about.c goose.c pixbuf_util.c
+***************
+*** 284,290 ****
+  if (not ming) or (cross and not build_target_only):
+      nonpareil_env.ParseConfig (sdl_pkg_config_cmd)
+  
+! csim_env = nonpareil_env.Copy ()
+  if not ming:
+      csim_env.Append (CPPDEFINES = [('DEFAULT_PATH', build_env ['libdir'])])
+  
+--- 286,292 ----
+  if (not ming) or (cross and not build_target_only):
+      nonpareil_env.ParseConfig (sdl_pkg_config_cmd)
+  
+! csim_env = nonpareil_env.Clone ()
+  if not ming:
+      csim_env.Append (CPPDEFINES = [('DEFAULT_PATH', build_env ['libdir'])])
+  
+***************
+*** 325,331 ****
+  # udis
+  #-----------------------------------------------------------------------------
+  
+! udis_env = build_env.Copy ()
+  
+  udis_srcs = Split ("""dis.c""")
+  
+--- 327,333 ----
+  # udis
+  #-----------------------------------------------------------------------------
+  
+! udis_env = build_env.Clone ()
+  
+  udis_srcs = Split ("""dis.c""")
+  
+***************
+*** 336,342 ****
+  # nsim_conv
+  #-----------------------------------------------------------------------------
+  
+! nsim_conv_env = build_env.Copy ()
+  
+  nsim_conv_srcs = Split ("""nsim_conv.c
+  	                   state_read_nsim.c state_write_nsim.c""")
+--- 338,344 ----
+  # nsim_conv
+  #-----------------------------------------------------------------------------
+  
+! nsim_conv_env = build_env.Clone ()
+  
+  nsim_conv_srcs = Split ("""nsim_conv.c
+  	                   state_read_nsim.c state_write_nsim.c""")
+diff --recursive --context nonpareil-0.79/src/asm.h nonpareil-0.79-r6/src/asm.h
+*** nonpareil-0.79/src/asm.h	2008-08-24 02:37:18.000000000 +0200
+--- nonpareil-0.79-r6/src/asm.h	2021-06-25 15:39:52.941986569 +0200
+***************
+*** 22,28 ****
+  
+  extern int arch;
+  
+! int pass;
+  extern int lineno;
+  extern int errors;
+  
+--- 22,28 ----
+  
+  extern int arch;
+  
+! extern int pass;
+  extern int lineno;
+  extern int errors;
+  
+diff --recursive --context nonpareil-0.79/src/printer.c nonpareil-0.79-r6/src/printer.c
+*** nonpareil-0.79/src/printer.c	2008-08-24 02:37:18.000000000 +0200
+--- nonpareil-0.79-r6/src/printer.c	2021-06-25 15:37:12.533148437 +0200
+***************
+*** 17,22 ****
+--- 17,25 ----
+  along with this program (in the file "COPYING"); if not, write to the
+  Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston,
+  MA 02111, USA.
++ 
++ 
++ Patch 2014-05-24 Urs Lindegger replaced Z_BEST_COMPRESSION with number since no more found. Probably issue came since png.h got updated
+  */
+  
+  #include <stdbool.h>
+***************
+*** 594,600 ****
+      }
+  
+    png_init_io (png_ptr, f);
+!   png_set_compression_level (png_ptr, Z_BEST_COMPRESSION);
+  
+    png_set_IHDR (png_ptr,
+  		info_ptr,
+--- 597,604 ----
+      }
+  
+    png_init_io (png_ptr, f);
+!   //png_set_compression_level (png_ptr, Z_BEST_COMPRESSION);
+!   png_set_compression_level (png_ptr, 0); // hack 0 means no compression zlib compression levels 0 - 9
+  
+    png_set_IHDR (png_ptr,
+  		info_ptr,
