@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="app-text/tesseract
 	app-text/djvu
 	app-text/podofo
+	app-text/gtkspellmm
 	dev-cpp/gtksourceviewmm
 	dev-cpp/libxmlpp
 "
