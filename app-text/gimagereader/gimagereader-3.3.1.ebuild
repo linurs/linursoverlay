@@ -1,7 +1,7 @@
 # Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 inherit gnome2-utils
 
 DESCRIPTION="gImageReader is a simple Gtk/Qt front-end to tesseract-ocr"
@@ -21,15 +21,17 @@ DEPEND="app-text/tesseract
 	dev-cpp/libxmlpp
 "
 src_unpack() {
-	einfo "FILESDIR=${FILESDIR}"
 	unpack ${A}
 	cd "${S}"
 }
 
 src_prepare() {
 	einfo "Prepare the build";
-#	cmake -DINTERFACE_TYPE=qt5 
+#	cmake -DINTERFACE_TYPE=qt5
 	cmake -DINTERFACE_TYPE=gtk
+	cmake -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -DMANUAL_DIR=/usr/share/${P}
+	eapply_user
 	einfo "Source prepared";
 }
 
@@ -39,8 +41,12 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_schemas_update
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	gnome2_schemas_update
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
