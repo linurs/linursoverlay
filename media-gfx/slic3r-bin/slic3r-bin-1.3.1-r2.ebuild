@@ -7,7 +7,7 @@ inherit eutils
 DESCRIPTION="G-code generator for 3D printers"
 HOMEPAGE="http://slic3r.org/"
 SRC_URI="${SRC_URI}
-         amd64?   ( https://dl.slic3r.org/dev/linux/slic3r-1.3.1-dev-54a31ee-linux-x64.tar.bz2 )
+         amd64?   ( https://dl.slic3r.org/dev/linux/slic3r-1.3.1-dev-8c69278-linux-x64.tar.bz2 )
          "
 
 LICENSE="|| ( GPL-3 )"
