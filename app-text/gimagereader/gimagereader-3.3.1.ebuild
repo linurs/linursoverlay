@@ -4,7 +4,7 @@
 EAPI=7
 inherit gnome2-utils
 
-DESCRIPTION="gImageReader is a simple Gtk/Qt front-end to tesseract-ocr"
+DESCRIPTION="gImageReader is a simple Gtk front-end to tesseract-ocr"
 SRC_URI="https://github.com/manisandro/gImageReader/releases/download/v3.3.1/${P}.tar.xz"
 
 HOMEPAGE="https://github.com/manisandro/gImageReader"
@@ -19,7 +19,12 @@ DEPEND="app-text/tesseract
 	app-text/gtkspellmm
 	dev-cpp/gtksourceviewmm
 	dev-cpp/libxmlpp
-"
+	dev-cpp/gtkmm
+	dev-cpp/cairomm
+	dev-libs/json-glib
+	app-text/poppler
+	"
+
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
@@ -27,7 +32,7 @@ src_unpack() {
 
 src_prepare() {
 	einfo "Prepare the build";
-#	cmake -DINTERFACE_TYPE=qt5
+	einfo "This ebuild supports just gtk. qt is not supported due its dependencies";
 	cmake -DINTERFACE_TYPE=gtk
 	cmake -DCMAKE_INSTALL_PREFIX=/usr
 	cmake -DMANUAL_DIR=/usr/share/${P}
