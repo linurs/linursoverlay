@@ -18,8 +18,10 @@ DEPEND="
 	<=media-libs/freetype-2.11.0-r1[${MULTILIB_USEDEP}]
 	<=x11-libs/libXft-2.3.3[${MULTILIB_USEDEP}]
 	<=x11-libs/libXinerama-1.1.4-r1[${MULTILIB_USEDEP}]
-	<=sys-libs/glibc-2.33-r7[${MULTILIB_USEDEP}]
+	virtual/libcrypt[${MULTILIB_USEDEP}]
+        
 "
+RDEPEND="virtual/libcrypt[${MULTILIB_USEDEP}]"
 
 	DEF_INSTALLDIR=${D}opt
 	DEF_RUNDIR=${D}opt/bin
