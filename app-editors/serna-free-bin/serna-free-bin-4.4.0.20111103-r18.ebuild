@@ -1,7 +1,7 @@
 # Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 inherit eutils multilib-build
 
 DESCRIPTION="Serna free is a WYSIWYG XML editor"
@@ -15,10 +15,13 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	<=x11-libs/libXmu-1.1.3[${MULTILIB_USEDEP}]
-	<=media-libs/freetype-2.10.4[${MULTILIB_USEDEP}]
-	<=x11-libs/libXft-2.3.3[${MULTILIB_USEDEP}]
+	<=media-libs/freetype-2.11.0-r1[${MULTILIB_USEDEP}]
+	<=x11-libs/libXft-2.3.4[${MULTILIB_USEDEP}]
 	<=x11-libs/libXinerama-1.1.4-r1[${MULTILIB_USEDEP}]
+	virtual/libcrypt[${MULTILIB_USEDEP}]
+        
 "
+RDEPEND="virtual/libcrypt[${MULTILIB_USEDEP}]"
 
 	DEF_INSTALLDIR=${D}opt
 	DEF_RUNDIR=${D}opt/bin
@@ -43,7 +46,7 @@ DEPEND="
 
 pkg_nofetch() {
 	einfo "Serna-free is no more free and available from the authors internet site"
-	einfo "If you have a copy and move it to ${DISTDIR} and proceed"
+	einfo "If you have a copy and move it to /usr/portage/distfiles and proceed"
 }
 
 src_install() {
