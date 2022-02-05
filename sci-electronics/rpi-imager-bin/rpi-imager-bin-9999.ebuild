@@ -45,8 +45,8 @@ src_install() {
 
 	# fix the path inside the desktop file since it will be installed in opt
         #Exec=rpi-imager
-        #Exec=/opt/rpi-imager-9999/usr/bin/rpi-imager
-	sed -i 's/Exec=rpi-imager/Exec=\/opt\/rpi-imager-9999\/usr\/bin\/rpi-imager/g' "${D}"opt/"${P}"/usr/share/applications/rpi-imager.desktop
+        #Exec=/opt/rpi-imager-bin-9999/usr/bin/rpi-imager
+	sed -i 's/Exec=rpi-imager/Exec=\/opt\/rpi-imager-bin-9999\/usr\/bin\/rpi-imager/g' "${D}"opt/"${P}"/usr/share/applications/rpi-imager.desktop
 	domenu "${D}"opt/"${P}"/usr/share/applications/rpi-imager.desktop
 
         # use a link to fix issue with library name 
