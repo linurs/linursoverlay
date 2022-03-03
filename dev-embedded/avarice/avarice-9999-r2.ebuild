@@ -22,14 +22,6 @@ IUSE=""
 DEPEND=">=dev-vcs/subversion-1.12.2"
 
 src_prepare() {
-	einfo "P=${P}"
-	einfo "PN=${PN}"
-	einfo "PV=${PV}"
-	einfo "PR=${PR}"
-	einfo "A=${A}"
-	einfo "S=${S}"
-	einfo "WORKDIR=${WORKDIR}"
-	einfo "FILESDIR=${FILESDIR}"
 
 # have the source there where it has to be
 	mv "${WORKDIR}"/"${P}"/"${PN}"/* "${WORKDIR}"/"${P}"
@@ -38,4 +30,5 @@ src_prepare() {
 	einfo "Run Bootstrap"
 	./Bootstrap
 	einfo "Bootstrap ended"
+        eapply_user
 }
