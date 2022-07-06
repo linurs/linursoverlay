@@ -2,39 +2,42 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{6,7,8,9,10} )
 DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1 desktop
 
 if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="https://github.com/linurs/ftpmounter.git"
+	EGIT_REPO_URI="https://github.com/linurs/RadioFE.git"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="http://www.linurs.org/download/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
 fi
 
-DESCRIPTION="mtpfs mounter"
+KEYWORDS="~amd64 ~x86"
+DESCRIPTION="Radio Front End for mplayer"
 HOMEPAGE="http://www.linurs.org"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""
 
-RDEPEND=">=net-fs/curlftpfs-0.9.2"
-
 DOCS=( README.md )
 
-python_install_all() {
-	doman ftpmounter.1
-	insinto /usr/share/ftpmounter
-	doins favicon.ico
-	doins ftpmounter.png
-	doins favicon.gif
+DEPEND="
+	>=media-video/mplayer-1.3.0
+	>=dev-python/pillow-7.2.0
+"
 
-	dosym "${ED%}/usr/bin/ftpmounter.py" /usr/bin/ftpmounter
-	doicon ftpmounter.png
-	domenu ftpmounter.desktop
+python_install_all() {
+	doman RadioFE.1
+	insinto /usr/share/RadioFE
+	doins favicon.ico
+	doins RadioFE.png
+	doins favicon.gif
+	doins default.png
+	doins -r Channels
+
+	dosym "${ED%}/usr/bin/RadioFE.py" /usr/bin/RadioFE
+	doicon RadioFE.png
+	domenu RadioFE.desktop
 	distutils-r1_python_install_all
 }
