@@ -1,13 +1,13 @@
 # Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 inherit eutils
-DESCRIPTION="bitscope chart"
+DESCRIPTION="bitscope display"
 HOMEPAGE="http://www.bitscope.com/"
 SRC_URI="${SRC_URI}
-	x86?	( http://bitscope.com/download/files/bitscope-chart_2.0.FK22M_i386.deb )
-	amd64?	( http://bitscope.com/download/files/bitscope-chart_2.0.FK22M_amd64.deb )"
+	x86?	( http://bitscope.com/download/files/bitscope-display_1.0.EC17A_i386.deb )
+	amd64?	( http://bitscope.com/download/files/bitscope-display_1.0.EC17A_amd64.deb )"
 LICENSE="GPL-2"
 
 SLOT="0"
@@ -32,12 +32,12 @@ src_install() {
 	mv "${S}" "${D}"opt || die
 
 	# adds an picture to the icons
-	doicon "${D}"opt/"${P}"/usr/share/pixmaps/bitscope-chart.png
+	doicon "${D}"opt/"${P}"/usr/share/pixmaps/bitscope-display.png
 	# fix the path inside the desktop file since it will be installed in opt
-	sed -i 's/\/usr\/bin\/bitscope-chart/\/opt\/bitscope-chart-bin-2.0\/usr\/bin\/bitscope-chart/g' "${D}"opt/"${P}"/usr/share/applications/bitscope-chart.desktop
+	sed -i 's/\/usr\/bin\/bitscope-display/\/opt\/bitscope-display-bin-1.0\/usr\/bin\/bitscope-display/g' "${D}"opt/"${P}"/usr/share/applications/bitscope-display.desktop
 	# remove the icon file extension
-	sed -i 's/.png//g' "${D}"opt/"${P}"/usr/share/applications/bitscope-chart.desktop
+	sed -i 's/.png//g' "${D}"opt/"${P}"/usr/share/applications/bitscope-display.desktop
 	# remove the deprecated value Application
-	sed -i 's/;Application//g' "${D}"opt/"${P}"/usr/share/applications/bitscope-chart.desktop
-	domenu "${D}"opt/"${P}"/usr/share/applications/bitscope-chart.desktop
+	sed -i 's/;Application//g' "${D}"opt/"${P}"/usr/share/applications/bitscope-display.desktop
+	domenu "${D}"opt/"${P}"/usr/share/applications/bitscope-display.desktop
 }
