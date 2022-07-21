@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=7
+EAPI=6
 inherit eutils 
 DESCRIPTION="G-code generator for 3D printers"
 HOMEPAGE="http://slic3r.org/"
