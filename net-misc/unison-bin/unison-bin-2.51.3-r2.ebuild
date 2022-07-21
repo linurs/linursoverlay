@@ -2,17 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=7
 inherit eutils 
 DESCRIPTION="unison binary"
 HOMEPAGE="https://www.cis.upenn.edu/~bcpierce/unison/"
 
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64"
 
-SRC_URI="${SRC_URI}
-x86?   ( http://unison-binaries.inria.fr/files/unison-2.32.12.linux.32bit.zip )
-amd64? ( http://unison-binaries.inria.fr/files/unison-2.32.12.linux.64bit.zip ) 
-"
+SRC_URI="https://github.com/bcpierce00/unison/releases/download/v2.51.3/unison-v2.51.3+ocaml-4.11.1+x86_64.linux.tar.gz"
 
 LICENSE="GPL-3"
 
@@ -22,7 +19,7 @@ SLOT="0"
 
 IUSE=""
 
-RDEPEND=">=x11-libs/pangox-compat-0.0.2"
+RDEPEND=""
 DEPEND=""
 
 src_unpack(){
@@ -30,7 +27,9 @@ src_unpack(){
      einfo "unpack ${A}"
      unpack ${A}
      mkdir ${WORKDIR}/${P} 
-     mv ${WORKDIR}/unison ${WORKDIR}/${P} 
+     mv ${WORKDIR}/bin ${WORKDIR}/${P}/bin 
+     mv ${WORKDIR}/LICENSE ${WORKDIR}/${P}/LICENSE
+     mv ${WORKDIR}/README.md ${WORKDIR}/${P}/README.md
   fi
 
 #  einfo "P=${P}" 
@@ -52,6 +51,6 @@ src_install() {
   doicon ${FILESDIR}/${PN}.png
 
   einfo "Do the desktop file" 
-  make_desktop_entry /opt/${P}/unison ${PN} ${PN} System  
+  make_desktop_entry /opt/${P}/bin/unison-gtk2 ${PN} ${PN} System  
 }
 
