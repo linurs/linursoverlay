@@ -31,7 +31,8 @@ src_unpack() {
 
 src_prepare() {
 	einfo "Apply patch in ${FILESDIR}";
-	epatch "${FILESDIR}/nonpareil-0.79-r6.patch"
+	epatch "${FILESDIR}/nonpareil-0.79-r7.patch"
+	eapply_user
 }
 
 src_compile() {
