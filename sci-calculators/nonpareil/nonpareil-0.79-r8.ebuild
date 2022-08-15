@@ -45,4 +45,8 @@ src_install() {
 	einfo "Start to install";
 	scons destdir="${D}" prefix=/usr install || die "scons install failed"
 	domenu "${FILESDIR}"/nonpareil.desktop
+        
+	# rename due to file collision with nss package
+        mv "${D}"usr/bin/modutil "${D}"usr/bin/modutil_nonpareil
+       
 }
