@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	<=x11-libs/libXmu-1.1.4[${MULTILIB_USEDEP}]
-	<=media-libs/freetype-2.12.1-r2[${MULTILIB_USEDEP}]
+	<=media-libs/freetype-2.13.0[${MULTILIB_USEDEP}]
 	<=x11-libs/libXft-2.3.6[${MULTILIB_USEDEP}]
 	<=x11-libs/libXinerama-1.1.5[${MULTILIB_USEDEP}]
 	virtual/libcrypt[${MULTILIB_USEDEP}]
