@@ -5,7 +5,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..12} )
+PYTHON_COMPAT=( python3_{7..11} )
 inherit distutils-r1
 
 DESCRIPTION="tk calendar widget for python"
