@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="
 	<=x11-libs/libXmu-1.1.4[${MULTILIB_USEDEP}]
 	<=media-libs/freetype-2.13.0[${MULTILIB_USEDEP}]
-	<=x11-libs/libXft-2.3.6[${MULTILIB_USEDEP}]
+	<=x11-libs/libXft-2.3.8[${MULTILIB_USEDEP}]
 	<=x11-libs/libXinerama-1.1.5[${MULTILIB_USEDEP}]
 	virtual/libcrypt[${MULTILIB_USEDEP}]
         
