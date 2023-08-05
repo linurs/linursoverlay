@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
+inherit eutils git-r3
 DESCRIPTION="raspberry pi imager"
 HOMEPAGE="https://www.raspberrypi.com/software/"
 SRC_URI="${SRC_URI}
@@ -11,10 +11,11 @@ SRC_URI="${SRC_URI}
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~amd64 "
+KEYWORDS="~amd64 amd64"
 IUSE=""
 RDEPEND="net-misc/curl[gnutls]"
 DEPEND=""
+PROPERTIES+=" live"
 
 src_unpack(){
         einfo "P=${P}"
