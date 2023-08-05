@@ -1,7 +1,7 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit eutils git-r3
 DESCRIPTION="raspberry pi imager"
 HOMEPAGE="https://www.raspberrypi.com/software/"
@@ -18,7 +18,7 @@ DEPEND=""
 PROPERTIES+=" live"
 
 src_unpack(){
-        einfo "P=${P}"
+   einfo "P=${P}"
 	einfo "PN=${PN}"
 	einfo "PV=${PV}"
 	einfo "PR=${PR}"
