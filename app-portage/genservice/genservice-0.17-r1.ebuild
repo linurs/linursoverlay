@@ -13,7 +13,11 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 DISTUTILS_USE_SETUPTOOLS=no
 
-DEPEND=">=app-portage/gentoolkit-0.2.4.5"
+DEPEND="
+>=app-portage/gentoolkit-0.2.4.5
+>=dev-python/pylinurs-0.2-r4
+"
+
 RDEPEND=""
 
 src_unpack(){
@@ -28,8 +32,6 @@ src_unpack(){
 	einfo "FILESDIR=${FILESDIR}"
 	
 	mkdir "${WORKDIR}"/"${P}"
-	mv "${WORKDIR}"/${A}* "${WORKDIR}"/"${P}"
-        
 	cd "${WORKDIR}"/"${P}"/
         unpack ${A}
 }
