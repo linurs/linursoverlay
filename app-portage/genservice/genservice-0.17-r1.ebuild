@@ -1,5 +1,7 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
 
 DESCRIPTION="Simple tool for everyday emerge commands."
 SRC_URI="http://www.linurs.org/download/${P}.tar.gz"
@@ -7,16 +9,35 @@ HOMEPAGE="http://www.linurs.org"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
+DISTUTILS_USE_SETUPTOOLS=no
 
 DEPEND=">=app-portage/gentoolkit-0.2.4.5"
 RDEPEND=""
 
-src_install () {
+src_unpack(){
+        einfo "P=${P}"
+	einfo "PN=${PN}"
+	einfo "PV=${PV}"
+	einfo "PR=${PR}"
+	einfo "A=${A}"
+	einfo "D=${D}"
+	einfo "S=${S}"
+	einfo "WORKDIR=${WORKDIR}"
+	einfo "FILESDIR=${FILESDIR}"
+	
+	mkdir "${WORKDIR}"/"${P}"
+	mv "${WORKDIR}"/${A}* "${WORKDIR}"/"${P}"
+        
+	cd "${WORKDIR}"/"${P}"/
+        unpack ${A}
+}
+
+src_install() {
 	exeinto /usr/bin
 	doexe genservice.py
-	dosym "${EPREFIX}"/usr/bin/genservice.py /usr/bin/genservice
+	dosym genservice.py /usr/bin/genservice
 
 	doexe gentooconfig.py
 	doexe gentooprofile.py
