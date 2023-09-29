@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-inherit eutils multilib-build
+inherit multilib-build
 
 DESCRIPTION="Serna free is a WYSIWYG XML editor"
+RESTRICT="fetch"
 SRC_URI="http://downloads.syntext.com/serna-free/4.4.0-RELEASE/serna-free-4.4.0-20111103-linux.tgz"
 HOMEPAGE="http://www.syntext.com"
-RESTRICT="fetch"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -15,11 +15,10 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	<=x11-libs/libXmu-1.1.4[${MULTILIB_USEDEP}]
-	<=media-libs/freetype-2.13.0[${MULTILIB_USEDEP}]
+	<=media-libs/freetype-2.13.999[${MULTILIB_USEDEP}]
 	<=x11-libs/libXft-2.3.8[${MULTILIB_USEDEP}]
 	<=x11-libs/libXinerama-1.1.5[${MULTILIB_USEDEP}]
 	virtual/libcrypt[${MULTILIB_USEDEP}]
-        
 "
 RDEPEND="virtual/libcrypt[${MULTILIB_USEDEP}]"
 
@@ -195,6 +194,4 @@ EOF
 # make a link so path will not appear in the desktop filename
 	dosym "${ED%}"/opt/serna-free-4.4/bin/serna.sh /usr/bin/serna-free-bin
 	domenu "${FILESDIR}"/serna-free-bin.desktop
-# this gives a bad filename make_desktop_entry "serna-free-bin" "serna-free-bin" "/usr/share/pixmaps/SernaIcon48.png" "Office"
-
 }
