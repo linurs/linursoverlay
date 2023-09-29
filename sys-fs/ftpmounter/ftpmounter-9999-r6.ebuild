@@ -34,7 +34,6 @@ python_install_all() {
 	doins ftpmounter.png
 	doins favicon.gif
 
-	dosym "${ED%}/usr/bin/ftpmounter.py" /usr/bin/ftpmounter
 	doicon ftpmounter.png
 	domenu ftpmounter.desktop
 	distutils-r1_python_install_all
