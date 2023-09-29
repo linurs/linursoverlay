@@ -1,22 +1,23 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{6,7,8,9,10,11} )
-DISTUTILS_USE_SETUPTOOLS=no
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
+# DISTUTILS_USE_SETUPTOOLS=no
+
 inherit distutils-r1 desktop
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/linurs/ftpmounter.git"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="http://www.linurs.org/download/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
 fi
 
-DESCRIPTION="mtpfs mounter"
+DESCRIPTION="ftp file system mounter"
 HOMEPAGE="http://www.linurs.org"
 SLOT="0"
 LICENSE="GPL-2"
