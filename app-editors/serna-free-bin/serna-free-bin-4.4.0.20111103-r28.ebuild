@@ -193,6 +193,7 @@ EOF
 # create desktop
 	einfo "Create desktop file ${FILESDIR}/serna-free-bin.desktop"
 # make a link so path will not appear in the desktop filename
-	dosym -r /opt/serna-free-4.4/bin/serna.sh /usr/bin/serna-free-bin
+	cd "${D}"/usr/bin/
+	dosym ../../opt/serna-free-4.4/bin/serna.sh serna-free-bin
 	domenu "${FILESDIR}"/serna-free-bin.desktop
 }
