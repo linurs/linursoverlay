@@ -1,12 +1,13 @@
 # Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-inherit multilib-build
+EAPI="7"
+inherit multilib-build desktop
 
 DESCRIPTION="Serna free is a WYSIWYG XML editor"
 RESTRICT="fetch"
-SRC_URI="http://downloads.syntext.com/serna-free/4.4.0-RELEASE/serna-free-4.4.0-20111103-linux.tgz"
+# dummy links since they do not exist anymore
+SRC_URI="http://downloads.syntext.com/serna-free/serna-free-4.4.0-20111103-linux.tgz"
 HOMEPAGE="http://www.syntext.com"
 
 SLOT="0"
@@ -22,8 +23,8 @@ DEPEND="
 "
 RDEPEND="virtual/libcrypt[${MULTILIB_USEDEP}]"
 
-	DEF_INSTALLDIR=${D}opt
-	DEF_RUNDIR=${D}opt/bin
+	DEF_INSTALLDIR=${D}/opt
+	DEF_RUNDIR=${D}/opt/bin
 
 	POST_INSTALLDIR=/opt
 
@@ -187,11 +188,12 @@ EOF
 	trap 0
 
 	# adds an picture to the icons
-	doicon "${D}"opt/serna-free-4.4/icons/SernaIcon48.png
+	doicon "${D}/opt/serna-free-4.4/icons/SernaIcon48.png"
 
 # create desktop
 	einfo "Create desktop file ${FILESDIR}/serna-free-bin.desktop"
 # make a link so path will not appear in the desktop filename
-	dosym "${ED%}"/opt/serna-free-4.4/bin/serna.sh /usr/bin/serna-free-bin
+	cd "${D}"
+	dosym ./opt/serna-free-4.4/bin/serna.sh /usr/bin/serna-free-bin
 	domenu "${FILESDIR}"/serna-free-bin.desktop
 }
