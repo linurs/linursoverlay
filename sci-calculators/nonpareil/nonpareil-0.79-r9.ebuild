@@ -15,7 +15,7 @@ IUSE=""
 
 DEPEND="sys-devel/flex
 	sys-devel/bison
-	dev-util/scons
+	dev-build/scons
 	media-libs/netpbm"
 
 RDEPEND="x11-libs/gtk+
