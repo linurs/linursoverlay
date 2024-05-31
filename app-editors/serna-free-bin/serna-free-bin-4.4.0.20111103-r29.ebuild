@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -15,7 +15,7 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
-	<=x11-libs/libXmu-1.1.4[${MULTILIB_USEDEP}]
+	<=x11-libs/libXmu-1.2.1[${MULTILIB_USEDEP}]
 	<=media-libs/freetype-2.13.999[${MULTILIB_USEDEP}]
 	<=x11-libs/libXft-2.3.8[${MULTILIB_USEDEP}]
 	<=x11-libs/libXinerama-1.1.5[${MULTILIB_USEDEP}]
