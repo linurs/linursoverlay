@@ -4,13 +4,13 @@
 EAPI=8
 
 DESCRIPTION="Simple tool for everyday emerge commands."
-SRC_URI="http://www.linurs.org/download/${P}.tar.gz"
 HOMEPAGE="http://www.linurs.org"
+SRC_URI="http://www.linurs.org/download/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE=""
+# IUSE=""
 DISTUTILS_USE_SETUPTOOLS=no
 
 DEPEND="
@@ -18,22 +18,22 @@ DEPEND="
 >=dev-python/pylinurs-0.2-r4
 "
 
-RDEPEND=""
+# RDEPEND=""
 
 src_unpack(){
-        einfo "P=${P}"
+	einfo "P=${P}"
 	einfo "PN=${PN}"
 	einfo "PV=${PV}"
 	einfo "PR=${PR}"
 	einfo "A=${A}"
-	einfo "D=${D}"
+	# einfo "D=${D}"
 	einfo "S=${S}"
 	einfo "WORKDIR=${WORKDIR}"
 	einfo "FILESDIR=${FILESDIR}"
-	
+
 	mkdir "${WORKDIR}"/"${P}"
 	cd "${WORKDIR}"/"${P}"/
-        unpack ${A}
+	unpack ${A}
 }
 
 src_install() {
