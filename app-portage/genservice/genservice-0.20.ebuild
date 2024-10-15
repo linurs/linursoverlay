@@ -15,7 +15,7 @@ DISTUTILS_USE_SETUPTOOLS=no
 
 DEPEND="
 >=app-portage/gentoolkit-0.2.4.5
->=dev-python/pylinurs-0.2-r4
+>=dev-python/pylinurs-0.3
 "
 
 # RDEPEND=""
