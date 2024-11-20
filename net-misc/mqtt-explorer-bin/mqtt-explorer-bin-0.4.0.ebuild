@@ -17,12 +17,26 @@ src_unpack() {
 }
 
 src_install() {
-	einfo "S=${S}"
+
 	cd "${S}" || die
 
-        einfo "D=${D}"
-        mkdir ${D}/usr
-        mkdir ${D}/opt        
+	mkdir "${D}"/usr
 	cp -r usr/* "${D}/usr/" || die
+	# Do not install zipped doc
+	if [ -d "${D}/usr/share/doc/mqtt-explorer" ]; then
+		find "${D}/usr/share/doc/mqtt-explorer" -name "*.gz" -exec gunzip {} + || die
+		dodoc -r "${D}/usr/share/doc/mqtt-explorer"/* || die
+		rm -r "${D}/usr/share/doc/mqtt-explorer" || die
+	fi
+	# Fix the icon path
+	if [ -f "${D}/usr/share/icons/hicolor/0x0/apps/mqtt-explorer.png" ]; then
+		dodir /usr/share/icons/hicolor/512x512/apps
+		mv "${D}/usr/share/icons/hicolor/0x0/apps/mqtt-explorer.png" \
+		"${D}/usr/share/icons/hicolor/512x512/apps/" || die
+		rmdir "${D}/usr/share/icons/hicolor/0x0/apps" || die
+	fi
+
+	mkdir "${D}"/opt
+
 	cp -r opt/* "${D}/opt/" || die
 }
