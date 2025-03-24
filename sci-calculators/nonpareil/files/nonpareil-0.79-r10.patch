@@ -1,0 +1,309 @@
+diff '--color=auto' --unified --recursive nonpareil-0.79/README nonpareil-0.79-r10-patch/README
+--- nonpareil-0.79/README	2008-08-24 02:37:34.000000000 +0200
++++ nonpareil-0.79-r10-patch/README	2025-03-24 09:33:29.521759589 +0100
+@@ -5,6 +5,7 @@
+ -----------------------------------------------------------------------------
+ 
+ News:
++2025-03-24 urs@linurs.org patched version to be used with scons 4.8.1 and gcc 14.2.1_p20241221 (Gentoo Linux)
+ 
+ Release 0.79 removes the Voyager models pending a licensing update.
+ Note that the ROM images of the Voyager calculators as present in
+diff '--color=auto' --unified --recursive nonpareil-0.79/SConstruct nonpareil-0.79-r10-patch/SConstruct
+--- nonpareil-0.79/SConstruct	2008-08-24 02:37:34.000000000 +0200
++++ nonpareil-0.79-r10-patch/SConstruct	2025-03-24 09:38:45.729873810 +0100
+@@ -27,59 +27,24 @@
+ # Options
+ #-----------------------------------------------------------------------------
+ 
+-opts = Options (conf_file)
++opts = Variables(conf_file)
+ 
+-opts.AddOptions (EnumOption ('host',
+-			     help = 'host build platform',
+-			     allowed_values = ('posix', 'win32'),
+-			     default = 'posix',
+-			     ignorecase = 1),
+-
+-		 EnumOption ('target',
+-			     help = 'execution target platform',
+-			     allowed_values = ('posix', 'win32'),
+-			     default = 'posix',
+-			     ignorecase = 1),
+-
+-		 PathOption ('prefix',
+-			     'installation path prefix',
+-			     '/usr/local'),
+-
+-		 # Don't use PathOption for other paths, because we don't
+-		 # require the directories to preexist.
+-		 ('bindir',
+-		  'path for executable files (default is $prefix/bin)',
+-		  ''),
+-
+-		 ('libdir',
+-		  'path for library files (default is $prefix/lib/nonpareil)',
+-		  ''),
+-
+-		 ('destdir',
+-		  'installation virtual root directory (for packaging)',
+-		  ''),
+-
+-		 BoolOption ('debug',
+-			     help = 'compile for debugging',
+-			     default = 1),
+-
+-		 # Feature switches:
+-
+-		 BoolOption ('has_debugger_gui',
+-			     help = 'enable debugger GUI interface',
+-			     default = 0),
+-
+-		 BoolOption ('has_debugger_cli',
+-			     help = 'enable debugger command-line interface',
+-			     default = 0),
+-
+-		 BoolOption ('use_tcl',
+-			     help = 'use Tcl as debug command interpreter (only when debugger CLI is enabled)',
+-			     default = 1),  # only if has_debugger_cli
+-
+-		 BoolOption ('use_readline',
+-			     help = 'use Readline library for command editing and history (only when debugger CLI is enabled)',
+-			     default = 1))  # only if has_debugger_cli
++opts.Add(EnumVariable('host', 'host build platform', 'posix', ('posix', 'win32'), ignorecase=True))
++opts.Add(EnumVariable('target', 'execution target platform', 'posix', ('posix', 'win32'), ignorecase=True))
++opts.Add(PathVariable('prefix', 'installation path prefix', '/usr/local'))
++
++# Don't use PathVariable for other paths, because we don't require the directories to preexist.
++opts.Add(('bindir', 'path for executable files (default is $prefix/bin)', ''))
++opts.Add(('libdir', 'path for library files (default is $prefix/lib/nonpareil)', ''))
++opts.Add(('destdir', 'installation virtual root directory (for packaging)', ''))
++
++opts.Add(BoolVariable('debug', 'compile for debugging', True))
++
++# Feature switches:
++opts.Add(BoolVariable('has_debugger_gui', 'enable debugger GUI interface', False))
++opts.Add(BoolVariable('has_debugger_cli', 'enable debugger command-line interface', False))
++opts.Add(BoolVariable('use_tcl', 'use Tcl as debug command interpreter (only when debugger CLI is enabled)', True))
++opts.Add(BoolVariable('use_readline', 'use Readline library for command editing and history (only when debugger CLI is enabled)', True))
+ 
+ #-----------------------------------------------------------------------------
+ # Cache options
+@@ -120,9 +85,10 @@
+ 
+     try:
+         os.mkdir (treedir)
+-    except OSError, (errnum, strerror):
++    except OSError as e:
++        errnum, strerror = e.args
+         if errnum != errno.EEXIST:
+-            print 'mkdir ', treedir, ':', strerror
++            print('mkdir ', treedir, ':', strerror)
+ 
+     cmd = 'tar cf - '
+     #
+@@ -137,7 +103,7 @@
+ 
+ def tarballer (target, source, env):            
+     cmd = 'tar -czf ' + str (target[0]) +  ' ' + str(source[0])
+-    print 'running ', cmd, ' ... '
++    print('running ', cmd, ' ... ')
+     p = os.popen (cmd)
+     return p.close ()
+ 
+@@ -235,7 +201,7 @@
+ # host platform code
+ #-----------------------------------------------------------------------------
+ 
+-native_env = env.Copy ()
++native_env = env.Clone()
+ native_env ['build_target_only'] = 0
+ SConscript ('src/SConscript',
+             build_dir = 'build/' + env ['host'],
+@@ -256,7 +222,7 @@
+ #-----------------------------------------------------------------------------
+ 
+ if (env ['host'] != env ['target']):
+-	cross_build_env = env.Copy ()
++	cross_build_env = env.Clone ()
+ 	cross_build_env ['build_target_only'] = 1
+ 	SConscript ('src/SConscript',
+ 		    build_dir = 'build/' + env ['target'],
+Only in nonpareil-0.79-r10-patch: nonpareil.conf
+diff '--color=auto' --unified --recursive nonpareil-0.79/src/SConscript nonpareil-0.79-r10-patch/src/SConscript
+--- nonpareil-0.79/src/SConscript	2008-08-24 02:37:18.000000000 +0200
++++ nonpareil-0.79-r10-patch/src/SConscript	2025-03-24 09:40:14.290253117 +0100
+@@ -79,7 +79,8 @@
+ state_io_objs = [build_env.Object(src) for src in state_io_srcs];
+ state_io_packages = "gtk+-2.0 gdk-2.0 gdk-pixbuf-2.0 glib-2.0 libxml-2.0"
+ 
+-release_env = build_env.Copy (CPPDEFINES = [('NONPAREIL_RELEASE', build_env ['RELEASE'])])
++release_env = build_env.Clone(CPPDEFINES=[('NONPAREIL_RELEASE', build_env['RELEASE'])])
++
+ common_objs.append (release_env.Object ('release.c'))
+ 
+ build_env.ParseConfig(pkg_config_cmd + state_io_packages)
+@@ -89,7 +90,7 @@
+ #-----------------------------------------------------------------------------
+ 
+ if build_env ['build_target_only'] == 0:
+-    str2png_env = build_env.Copy ()
++    str2png_env = build_env.Clone()
+ 
+     str2png_env.Append (CPPDEFINES = [('DEFAULT_PATH', 'image')])
+ 
+@@ -196,7 +197,7 @@
+ #-----------------------------------------------------------------------------
+ 
+ if not build_target_only:
+-    title_env = native_env.Copy (STR2PNG_STRING = 'NONPAREIL',
++    title_env = native_env.Clone (STR2PNG_STRING = 'NONPAREIL',
+                                  STR2PNG_OPTS = '-x 40 -y 44 -m 10')
+ 
+     title_env.STR2PNG (target = 'nonpareil_title',
+@@ -205,7 +206,7 @@
+     native_env.PNG2C (target = '#build/common/nonpareil_title_png.c',
+                       source = 'nonpareil_title.png')
+             
+-    rgoose_env = native_env.Copy (STR2PNG_STRING = '.',
++    rgoose_env = native_env.Clone (STR2PNG_STRING = '.',
+                                   STR2PNG_OPTS = '-x 40 -y 44')
+ 
+     rgoose_env.STR2PNG (target = 'rgoose',
+@@ -214,7 +215,7 @@
+     native_env.PNG2C (target = '#build/common/rgoose_png.c',
+                       source = 'rgoose.png')
+             
+-    lgoose_env = native_env.Copy (STR2PNG_STRING = ',',
++    lgoose_env = native_env.Clone (STR2PNG_STRING = ',',
+                                   STR2PNG_OPTS = '-x 40 -y 44')
+ 
+     lgoose_env.STR2PNG (target = 'lgoose',
+@@ -235,7 +236,7 @@
+ # nonpareil
+ #-----------------------------------------------------------------------------
+ 
+-nonpareil_env = build_env.Copy ()
++nonpareil_env = build_env.Clone ()
+ 
+ nonpareil_srcs = Split ("""proc.c glib_async_queue_source.c
+                            about.c goose.c pixbuf_util.c
+@@ -284,7 +285,7 @@
+ if (not ming) or (cross and not build_target_only):
+     nonpareil_env.ParseConfig (sdl_pkg_config_cmd)
+ 
+-csim_env = nonpareil_env.Copy ()
++csim_env = nonpareil_env.Clone ()
+ if not ming:
+     csim_env.Append (CPPDEFINES = [('DEFAULT_PATH', build_env ['libdir'])])
+ 
+@@ -296,7 +297,7 @@
+ 
+ if build_env ['has_debugger_cli']:
+     csim_env.Append (CPPDEFINES = [('HAS_DEBUGGER_CLI', 1)])
+-    debugger_cli_env = csim_env.Copy ()
++    debugger_cli_env = csim_env.Clone ()
+     if build_env ['use_tcl']:
+         debugger_cli_env.Append (CPPDEFINES = [('USE_TCL', 1)])
+         nonpareil_env.Append (LIBS = 'tcl')
+@@ -325,7 +326,7 @@
+ # udis
+ #-----------------------------------------------------------------------------
+ 
+-udis_env = build_env.Copy ()
++udis_env = build_env.Clone ()
+ 
+ udis_srcs = Split ("""dis.c""")
+ 
+@@ -336,7 +337,7 @@
+ # nsim_conv
+ #-----------------------------------------------------------------------------
+ 
+-nsim_conv_env = build_env.Copy ()
++nsim_conv_env = build_env.Clone ()
+ 
+ nsim_conv_srcs = Split ("""nsim_conv.c
+ 	                   state_read_nsim.c state_write_nsim.c""")
+diff '--color=auto' --unified --recursive nonpareil-0.79/src/asm.h nonpareil-0.79-r10-patch/src/asm.h
+--- nonpareil-0.79/src/asm.h	2008-08-24 02:37:18.000000000 +0200
++++ nonpareil-0.79-r10-patch/src/asm.h	2025-03-23 20:34:02.253542195 +0100
+@@ -22,7 +22,7 @@
+ 
+ extern int arch;
+ 
+-int pass;
++extern int pass;
+ extern int lineno;
+ extern int errors;
+ 
+diff '--color=auto' --unified --recursive nonpareil-0.79/src/printer.c nonpareil-0.79-r10-patch/src/printer.c
+--- nonpareil-0.79/src/printer.c	2008-08-24 02:37:18.000000000 +0200
++++ nonpareil-0.79-r10-patch/src/printer.c	2025-03-24 10:01:35.526720991 +0100
+@@ -36,6 +36,7 @@
+ #include "proc.h"
+ #include "helios.h"
+ #include "printer.h"
++#include "zlib.h"
+ 
+ 
+ #define PRINTER_MODE_BUTTONS
+@@ -595,7 +596,7 @@
+ 
+   png_init_io (png_ptr, f);
+   png_set_compression_level (png_ptr, Z_BEST_COMPRESSION);
+-
++  
+   png_set_IHDR (png_ptr,
+ 		info_ptr,
+ 		PRINTER_WIDTH,                 // width
+diff '--color=auto' --unified --recursive nonpareil-0.79/src/proc_nut.c nonpareil-0.79-r10-patch/src/proc_nut.c
+--- nonpareil-0.79/src/proc_nut.c	2008-08-24 02:37:18.000000000 +0200
++++ nonpareil-0.79-r10-patch/src/proc_nut.c	2025-03-24 09:45:48.405967513 +0100
+@@ -1768,7 +1768,7 @@
+ 
+   for (addr = 0; addr < sim->max_ram; addr++)
+     if (nut_reg->ram_exists [addr])
+-      reg_zero (& nut_reg->ram [addr], 0, WSIZE - 1);
++      reg_zero(nut_reg->ram[addr], 0, WSIZE - 1);
+ }
+ 
+ 
+diff '--color=auto' --unified --recursive nonpareil-0.79/src/util.c nonpareil-0.79-r10-patch/src/util.c
+--- nonpareil-0.79/src/util.c	2008-08-24 02:37:18.000000000 +0200
++++ nonpareil-0.79-r10-patch/src/util.c	2025-03-24 09:46:40.554417135 +0100
+@@ -129,18 +129,6 @@
+   strcpy (*dest, src);
+ }
+ 
+-
+-// strlcpy will copy as much of src into dest as it can, up to one less than
+-// the maximum length of dest specified by the argument l.  Unlike strncpy(),
+-// strlcpy() will always leave dest NULL-terminated on return.
+-char *strlcpy (char *dest, const char *src, size_t l)
+-{
+-  strncpy (dest, src, l);
+-  dest [l - 1] = '\0';
+-  return dest;
+-}
+-
+-
+ // strlncpy will copy up to n characters from src to dest, but not more than
+ // one less than the maximum length of dest specified by the argument l.
+ // Unlike strncpy(), strlncpy() will always leave dest NULL-terminated on
+diff '--color=auto' --unified --recursive nonpareil-0.79/src/util.h nonpareil-0.79-r10-patch/src/util.h
+--- nonpareil-0.79/src/util.h	2008-08-24 02:37:18.000000000 +0200
++++ nonpareil-0.79-r10-patch/src/util.h	2025-03-24 09:47:34.656788154 +0100
+@@ -52,13 +52,6 @@
+ 
+ void realloc_strcpy (char **dest, char *src);
+ 
+-
+-// strlcpy will copy as much of src into dest as it can, up to one less than
+-// the maximum length of dest specified by the argument l.  Unlike strncpy(),
+-// strlcpy() will always leave dest NULL-terminated on return.
+-char *strlcpy (char *dest, const char *src, size_t l);
+-
+-
+ // strlncpy will copy up to n characters from src to dest, but not more than
+ // one less than the maximum length of dest specified by the argument l.
+ // Unlike strncpy(), strlncpy() will always leave dest NULL-terminated on
