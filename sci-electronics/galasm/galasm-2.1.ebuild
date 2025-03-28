@@ -5,7 +5,8 @@ EAPI=8
 
 DESCRIPTION="GALasm assembler for GAL Programmable Logic Devices"
 HOMEPAGE="https://github.com/daveho/GALasm"
-SRC_URI="https://github.com/daveho/GALasm/archive/master.tar.gz"
+# rename the downloaded file to get an unique name
+SRC_URI="https://github.com/daveho/GALasm/archive/master.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
