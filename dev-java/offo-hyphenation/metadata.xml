@@ -2,9 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
-    <email>your-team@gentoo.org</email>  <!-- Replace with actual maintainer email -->
+    <email>your-team@gentoo.org</email>
   </maintainer>
   <upstream>
-    <remote-id type="pypi">fpdf</remote-id>
+    <remote-id type="sourceforge">offo</remote-id>
   </upstream>
 </pkgmetadata>

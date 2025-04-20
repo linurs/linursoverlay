@@ -1,25 +1,16 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-#PYTHON_COMPAT=( python{2_7} )
-#inherit python-r1
+EAPI=8
 DESCRIPTION="Atmel avr8 toolchain"
 HOMEPAGE="https://www.microchip.com/mplab/avr-support/avr-and-arm-toolchains-c-compilers"
-
 SRC_URI="avr8-gnu-toolchain-3.6.2.1759-linux.any.x86_64.tar.gz"
-
-RESTRICT="fetch"
 LICENSE="Atmel"
-# variable of the sub directory created after unpacking and having the files to be installed
-directory_name="avr8-gnu-toolchain-linux_x86_64"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
-
-#RDEPEND="=dev-lang/python-2.7.18-r6"
-RDEPEND="<dev-lang/python-3.0"
-DEPEND=""
+RESTRICT="fetch"
+# variable of the sub directory created after unpacking and having the files to be installed
+directory_name="avr8-gnu-toolchain-linux_x86_64"
 
 pkg_nofetch() {
 	einfo "Fetch restriction turned on, downloading needs to be done manually"
@@ -33,7 +24,6 @@ src_unpack(){
 }
 
 src_install() {
-	# Install in /opt
 	dodir /opt
 	mv "${WORKDIR}"/"${P}" "${D}"opt || die
 }

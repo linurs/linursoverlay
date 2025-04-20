@@ -1,8 +1,8 @@
-# Copyright 2020 linurs.org
+# Copyright 2025 linurs.org
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=7
+EAPI=8
 inherit desktop
 DESCRIPTION="unison binary"
 HOMEPAGE="https://www.cis.upenn.edu/~bcpierce/unison/"
@@ -23,15 +23,6 @@ src_unpack(){
 		mv "${WORKDIR}"/README.md "${WORKDIR}"/"${P}"/README.md
 	fi
 
-#  einfo "P=${P}"
-#  einfo "PN=${PN}"
-#  einfo "PV=${PV}"
-#  einfo "PR=${PR}"
-#  einfo "A=${A}"
-#  einfo "D=${D}"
-#  einfo "S=${S}"
-#  einfo "WORKDIR=${WORKDIR}"
-#  einfo "FILESDIR=${FILESDIR}"
 }
 
 src_install() {

@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 2025 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit subversion
 
 DESCRIPTION="Interface for GDB to Atmel AVR JTAGICE in circuit emulator"
@@ -11,8 +11,7 @@ ESVN_REPO_URI="svn://svn.code.sf.net/p/avarice/code/trunk"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE=""
+KEYWORDS=""
 
 DEPEND=">=dev-vcs/subversion-1.12.2"
 
