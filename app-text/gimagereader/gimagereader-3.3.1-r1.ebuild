@@ -1,16 +1,14 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit gnome2-utils
 
 DESCRIPTION="gImageReader is a simple Gtk front-end to tesseract-ocr"
-SRC_URI="https://github.com/manisandro/gImageReader/releases/download/v3.3.1/${P}.tar.xz"
-
 HOMEPAGE="https://github.com/manisandro/gImageReader"
-
-SLOT="0"
+SRC_URI="https://github.com/manisandro/gImageReader/releases/download/v${PV}/${P}.tar.xz"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="app-text/tesseract

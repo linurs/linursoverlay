@@ -1,10 +1,10 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{8..13} python3_13t)
 inherit distutils-r1 desktop
 
 if [[ ${PV} = *9999* ]]; then
@@ -16,9 +16,9 @@ fi
 
 DESCRIPTION="Radio Front End for mplayer"
 HOMEPAGE="http://www.linurs.org"
-SLOT="0"
+
 LICENSE="GPL-2"
-IUSE=""
+SLOT="0"
 
 DOCS=( README.md )
 

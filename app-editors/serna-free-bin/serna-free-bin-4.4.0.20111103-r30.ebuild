@@ -1,18 +1,18 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 inherit multilib-build desktop
 
 DESCRIPTION="Serna free is a WYSIWYG XML editor"
-RESTRICT="fetch"
+HOMEPAGE="http://www.syntext.com"
 # dummy links since they do not exist anymore
 SRC_URI="http://downloads.syntext.com/serna-free/serna-free-4.4.0-20111103-linux.tgz"
-HOMEPAGE="http://www.syntext.com"
-
-SLOT="0"
+S=${WORKDIR}/${SERNA_DIR}
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="fetch"
 
 DEPEND="
 	<=x11-libs/libXmu-1.2.1[${MULTILIB_USEDEP}]
@@ -23,8 +23,8 @@ DEPEND="
 "
 RDEPEND="virtual/libcrypt[${MULTILIB_USEDEP}]"
 
-	DEF_INSTALLDIR=${D}/opt
-	DEF_RUNDIR=${D}/opt/bin
+#	DEF_INSTALLDIR=${D}/opt
+#	DEF_RUNDIR=${D}/opt/bin
 
 	POST_INSTALLDIR=/opt
 
@@ -33,16 +33,13 @@ RDEPEND="virtual/libcrypt[${MULTILIB_USEDEP}]"
 	SERNA_NAME=serna-free
 	SERNA_TGZ=${SERNA_NAME}-4.4.tgz
 	SERNA_DIR=${SERNA_NAME}-4.4
-	S=${WORKDIR}/${SERNA_DIR}
 	SERNA_SCRIPT=${SERNA_NAME}-4.4
 
-	INSTALL_PREFIX=$DEF_INSTALLDIR
-	POST_INSTALL_PREFIX=$POST_INSTALLDIR
-
-	RUNDIR=${INSTALL_PREFIX}/bin
-	POST_RUNDIR=${POST_INSTALL_PREFIX}/bin
-
-	SERNA=${INSTALL_PREFIX}/${SERNA_DIR}
+#	INSTALL_PREFIX=$DEF_INSTALLDIR
+#	POST_INSTALL_PREFIX=$POST_INSTALLDIR
+#	RUNDIR=${INSTALL_PREFIX}/bin
+#	POST_RUNDIR=${POST_INSTALL_PREFIX}/bin
+#	SERNA=${INSTALL_PREFIX}/${SERNA_DIR}
 
 pkg_nofetch() {
 	einfo "Serna-free is no more free and available from the authors internet site"
@@ -59,6 +56,16 @@ src_install() {
 	einfo "S=${S}"
 	einfo "WORKDIR=${WORKDIR}"
 	einfo "FILESDIR=${FILESDIR}"
+
+	DEF_INSTALLDIR=${D}/opt
+	DEF_RUNDIR=${D}/opt/bin
+	INSTALL_PREFIX=$DEF_INSTALLDIR
+	POST_INSTALL_PREFIX=$POST_INSTALLDIR
+
+	RUNDIR=${INSTALL_PREFIX}/bin
+	POST_RUNDIR=${POST_INSTALL_PREFIX}/bin
+
+	SERNA=${INSTALL_PREFIX}/${SERNA_DIR}
 
 # The following follows the serna-free installer and has been converted to an ebuild
 # It does not require input from the user.

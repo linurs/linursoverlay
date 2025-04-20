@@ -5,6 +5,6 @@
     <email>your-team@gentoo.org</email>  <!-- Replace with actual maintainer email -->
   </maintainer>
   <upstream>
-    <remote-id type="pypi">fpdf</remote-id>
+    <remote-id type="github">bcpierce00/unison</remote-id>
   </upstream>
 </pkgmetadata>
