@@ -1,14 +1,18 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+DESCRIPTION="ftp file system mounter"
+HOMEPAGE="http://www.linurs.org"
+LICENSE="GPL-2"
+
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
-# DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{10..13} python3_13t pypy3 )
 
 inherit distutils-r1 desktop
-KEYWORDS="~amd64 ~arm64 ~x86"
+SLOT="0"
+KEYWORDS=""
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/linurs/ftpmounter.git"
@@ -16,12 +20,6 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="http://www.linurs.org/download/${P}.tar.gz"
 fi
-
-DESCRIPTION="ftp file system mounter"
-HOMEPAGE="http://www.linurs.org"
-SLOT="0"
-LICENSE="GPL-2"
-IUSE=""
 
 RDEPEND=">=net-fs/curlftpfs-0.9.2"
 

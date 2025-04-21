@@ -1,10 +1,10 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{6,7,8,9,10,11} )
-DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{11,12,13} python3_13t)
+DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 desktop
 
 if [[ ${PV} = *9999* ]]; then
@@ -14,16 +14,17 @@ else
 	SRC_URI="http://www.linurs.org/download/${P}.tar.gz"
 fi
 
-KEYWORDS="~amd64 ~x86"
 DESCRIPTION="Simple GUI for encfs"
 HOMEPAGE="http://www.linurs.org"
-SLOT="0"
 LICENSE="GPL-2"
-IUSE=""
+
+SLOT="0"
+KEYWORDS=""
 
 DOCS=( README.md )
 
-DEPEND=">=sys-fs/encfs-1.5 dev-lang/python[tk]"
+DEPEND=">=sys-fs/encfs-1.5 >=dev-lang/python-3[tk]"
+RDEPEND="dev-python/pylinurs"
 
 python_install_all() {
 	doman gencfs.1
