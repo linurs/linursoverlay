@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/Token2/fido2-manage.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 
 CONFLICTS="dev-libs/libfido2"
 DEPEND="sys-apps/pcsc-lite !dev-libs/libfido2"
