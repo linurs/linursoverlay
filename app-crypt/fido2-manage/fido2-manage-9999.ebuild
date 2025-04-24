@@ -13,7 +13,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 
-DEPEND="sys-apps/pcsc-lite"
+DEPEND="sys-apps/pcsc-lite"  # to have access to smart card readers
 RDEPEND="${DEPEND}"
 
 src_configure() {
