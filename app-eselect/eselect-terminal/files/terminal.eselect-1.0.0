@@ -1,0 +1,12 @@
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+DESCRIPTION="Select the default terminal emulator"
+MAINTAINER="urs@linurs.org"
+VERSION="1.0.0"
+
+SYMLINK_PATH=/usr/bin/x-terminal-emulator
+SYMLINK_TARGETS=( xterm alacritty kitty rxvt-unicode konsole )
+SYMLINK_DESCRIPTION='terminal binary'
+
+inherit bin-symlink
