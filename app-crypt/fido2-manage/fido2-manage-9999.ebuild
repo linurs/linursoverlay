@@ -13,8 +13,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 
-CONFLICTS="dev-libs/libfido2"
-DEPEND="sys-apps/pcsc-lite !dev-libs/libfido2"
+DEPEND="sys-apps/pcsc-lite"
 RDEPEND="${DEPEND}"
 
 src_configure() {
