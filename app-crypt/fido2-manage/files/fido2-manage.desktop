@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Fido2-manage
+Type=Application
+Comment=FIDO2 Manager
+Exec=/usr/bin/fido2-manage.py
+TryExec=/usr/bin/fido2-manage.py
+Icon=/usr/share/icons/hicolor/48x48/apps/token2.png
+Categories=System;
