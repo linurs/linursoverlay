@@ -37,7 +37,8 @@ src_configure() {
 	rm -rf build || die
 	mkdir build || die
 	cd build || die
-	cmake .. -DUSE_PCSC=ON || die
+	cmake .. -DUSE_PCSC=$(usex smartcard) || die
+	# cmake .. -DUSE_PCSC=ON || die
 }
 
 src_compile() {
