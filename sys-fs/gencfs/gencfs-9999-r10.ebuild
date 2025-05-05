@@ -33,7 +33,8 @@ python_install_all() {
 	doins gencfs.png
 	doins favicon.gif
 
-	dosym "${ED%}/usr/bin/gencfs.py" /usr/bin/gencfs
+	dobin gencfs.py
+	dosym gencfs.py /usr/bin/gencfs
 	doicon gencfs.png
 	domenu gencfs.desktop
 	distutils-r1_python_install_all
