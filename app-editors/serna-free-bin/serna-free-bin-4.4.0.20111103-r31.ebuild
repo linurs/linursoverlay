@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
-inherit multilib-build desktop
+inherit desktop
 
 DESCRIPTION="Serna free is a WYSIWYG XML editor"
 HOMEPAGE="http://www.syntext.com"
@@ -12,16 +12,19 @@ S=${WORKDIR}/${SERNA_DIR}
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="+abi_x86_32"
 RESTRICT="fetch"
 
 DEPEND="
-	<=x11-libs/libXmu-1.2.1[${MULTILIB_USEDEP}]
-	<=media-libs/freetype-2.13.999[${MULTILIB_USEDEP}]
-	<=x11-libs/libXft-2.3.8[${MULTILIB_USEDEP}]
-	<=x11-libs/libXinerama-1.1.5[${MULTILIB_USEDEP}]
-	virtual/libcrypt[${MULTILIB_USEDEP}]
+	abi_x86_32? (
+		<=x11-libs/libXmu-1.2.1[abi_x86_32]
+		<=media-libs/freetype-2.13.999[abi_x86_32]
+		<=x11-libs/libXft-2.3.8[abi_x86_32]
+		<=x11-libs/libXinerama-1.1.5[abi_x86_32]
+		virtual/libcrypt[abi_x86_32]
+	)
 "
-RDEPEND="virtual/libcrypt[${MULTILIB_USEDEP}]"
+RDEPEND="${DEPEND}"
 
 #	DEF_INSTALLDIR=${D}/opt
 #	DEF_RUNDIR=${D}/opt/bin
@@ -43,7 +46,7 @@ RDEPEND="virtual/libcrypt[${MULTILIB_USEDEP}]"
 
 pkg_nofetch() {
 	einfo "Serna-free is no more free and available from the authors internet site"
-	einfo "If you have a copy and move it to /usr/portage/distfiles and proceed"
+	einfo "If you have a copy and move it to ${PORTAGE_ACTUAL_DISTDIR} and proceed"
 }
 
 src_install() {
