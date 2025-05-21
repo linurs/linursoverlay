@@ -18,6 +18,7 @@ DEPEND="
 	smartcard? (
 		sys-apps/pcsc-lite
 	)
+	dev-libs/libcbor
 	app-eselect/eselect-terminal
 	x11-terms/x-terminal-emulator
 	dev-util/desktop-file-utils

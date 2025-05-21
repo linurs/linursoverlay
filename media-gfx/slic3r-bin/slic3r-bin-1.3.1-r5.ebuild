@@ -1,19 +1,24 @@
-# Copyright 2020 linurs.org
+# Copyright 2025 linurs.org
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=7
+EAPI=8
 inherit desktop
 DESCRIPTION="G-code generator for 3D printers"
 HOMEPAGE="http://slic3r.org/"
 SRC_URI="${SRC_URI}
 	amd64?   ( https://dl.slic3r.org/dev/linux/slic3r-1.3.1-dev-8c69278-linux-x64.tar.bz2 )
 "
-
 LICENSE="|| ( GPL-3 )"
-slic3r_pkg_name="Slic3r"
 SLOT="0"
 KEYWORDS="~amd64"
+RESTRICT="fetch"
+slic3r_pkg_name="Slic3r"
+
+pkg_nofetch() {
+	einfo "Slic3r is now on drop box https://slic3r.org/download/"
+	einfo "login to dropbox and copy and move dev/linux/slic3r-1.3.1-dev-8c69278-linux-x64.tar.bz2 to ${PORTAGE_ACTUAL_DISTDIR} is required"
+}
 
 src_unpack(){
 	if [ "${A}" != "" ]; then
@@ -49,4 +54,6 @@ src_install() {
 	einfo "cp ${FILESDIR}/slic3r.sh ${D}/opt/${P}"
 	cp "${FILESDIR}"/slic3r.sh "${D}"/opt/"${P}"
 	sed -i 's/xxx/1.3.1/g' "${D}"/opt/"${P}"/slic3r.sh
+	chmod +x "${D}"/opt/"${P}"/slic3r.sh
+
 }
