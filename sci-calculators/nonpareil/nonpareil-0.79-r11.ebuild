@@ -12,12 +12,15 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="sys-devel/flex
+GTK_DEP="x11-libs/gtk+"
+
+DEPEND="${GTK_DEP}
+	sys-devel/flex
 	sys-devel/bison
 	dev-build/scons
 	media-libs/netpbm"
 
-RDEPEND="x11-libs/gtk+
+RDEPEND="${GTK_DEP}
 	dev-libs/glib
 	dev-libs/libxml2
 	media-libs/libsdl
