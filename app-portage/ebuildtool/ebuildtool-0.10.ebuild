@@ -19,11 +19,9 @@ src_unpack(){
 src_install () {
 	exeinto /usr/bin
 	doexe ebuildtool.py
-	dosym ../usr/bin/ebuildtool.py /usr/bin/ebuildtool
-	#doman ebuildtool.1
+	dosym ebuildtool.py /usr/bin/ebuildtool
 	insinto /etc/ebuildtool
 	doins ebuildtool_def.py
-	# doins default.ebuild
 }
 
 pkg_postinst() {
