@@ -10,6 +10,12 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+DEPEND="
+>=dev-python/pylinurs-0.3
+"
+
+RDEPEND="${DEPEND}"
+
 src_unpack(){
 	mkdir "${WORKDIR}"/"${P}"
 	cd "${WORKDIR}"/"${P}"/
