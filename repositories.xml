@@ -9,7 +9,6 @@
         <email>urs@linurs.org</email>
         <name>Urs Lindegger</name>
     </owner>
-    <source type="git">git://github.com/linurs/linursoverlay.git</source>
     <source type="git">https://github.com/linurs/linursoverlay.git</source>
   </repo>
 </repositories>
