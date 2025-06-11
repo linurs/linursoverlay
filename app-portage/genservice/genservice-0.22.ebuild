@@ -18,15 +18,12 @@ DEPEND="
 >=dev-python/pylinurs-0.3
 "
 
-# RDEPEND=""
-
 src_unpack(){
 	einfo "P=${P}"
 	einfo "PN=${PN}"
 	einfo "PV=${PV}"
 	einfo "PR=${PR}"
 	einfo "A=${A}"
-	# einfo "D=${D}"
 	einfo "S=${S}"
 	einfo "WORKDIR=${WORKDIR}"
 	einfo "FILESDIR=${FILESDIR}"
