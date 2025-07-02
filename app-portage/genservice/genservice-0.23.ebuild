@@ -41,7 +41,7 @@ src_install() {
 	doexe gentooconfig.py
 	doexe gentooprofile.py
 	doexe gentoouse.py
-	check_world_dependencies.py
+	doexe check_world_dependencies.py
 
 	doman genservice.1
 	insinto /etc/genservice
