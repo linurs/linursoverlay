@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>urs@linurs.org</email>
+    <name>Linurs Project</name>
+  </maintainer>
+  <longdescription>
+    x11-terminal-emulator ebuild written from Urs Lindegger. Everybody is welcomed to use it and help to improve and maintain it.
+  </longdescription>
+</pkgmetadata>
