@@ -3,9 +3,9 @@
 <pkgmetadata>
   <maintainer type="project">
     <email>urs@linurs.org</email>
-    <name>gugofs</name>
+    <name>tkgocrypt</name>
   </maintainer>
   <longdescription>
-    gugofs is a gui for gocryptfs
+    tkgocrypt is a gui for gocryptfs. gocryptfs crypts files and directories inside a directory of a regular filesystem.
   </longdescription>
 </pkgmetadata>

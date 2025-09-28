@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{13..14} )
 DISTUTILS_USE_PEP517=flit
 inherit distutils-r1 desktop
 
-DESCRIPTION="gui for gocryptfs"
+DESCRIPTION="gui for tkgocryptfs"
 HOMEPAGE="https://www.linurs.org"
 SRC_URI="https://www.linurs.org/download/${P}.tar.gz"
 
@@ -27,11 +27,11 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	 # desktop file
-    domenu data/share/applications/gugofs.desktop
+    domenu data/share/applications/tkgocryptfs.desktop
 
     # icon
-    doicon data/share/icons/hicolor/48x48/apps/gugofs.png
+    doicon data/share/icons/hicolor/48x48/apps/tkgocryptfs.png
 
     # man page
-    doman data/share/man/man1/gugofs.1
+    doman data/share/man/man1/tkgocryptfs.1
 }
