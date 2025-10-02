@@ -23,8 +23,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-python_install_all() {
-	distutils-r1_python_install_all
+src_install() {
+	distutils-r1_src_install
 
 	# Add the files from outside the python whl package
 	doicon "${S}"/share/icons/hicolor/48x48/apps/tkgocryptfs.png
