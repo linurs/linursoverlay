@@ -5,6 +5,8 @@
     <email>urs@linurs.org</email>
     <name>tkgocrypt</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">linurs/tkgocryptfs</remote-id>  </upstream>
   <longdescription>
     tkgocrypt is a gui for gocryptfs. gocryptfs crypts files and directories inside a directory of a regular filesystem.
   </longdescription>
