@@ -26,8 +26,8 @@ RDEPEND="${DEPEND}"
 python_install_all() {
 	distutils-r1_python_install_all
 
-	einfo "Add the files from outside the pathon whl package"
-	doicon "${S}"/usr/share/icons/hicolor/48x48/apps/tkgocryptfs.png
-	domenu "${S}"/usr/share/applications/tkgocryptfs.desktop
-	doman  "${S}"/usr/share/man/man1/tkgocryptfs.1
+	# Add the files from outside the python whl package
+	doicon "${S}"/share/icons/hicolor/48x48/apps/tkgocryptfs.png
+	domenu "${S}"/share/applications/tkgocryptfs.desktop
+	doman  "${S}"/share/man/man1/tkgocryptfs.1
 }
