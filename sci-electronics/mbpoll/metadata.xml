@@ -2,6 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <upstream>
-    <remote-id type="github">raspberrypi/rpi-imager</remote-id>
+    <remote-id type="github">sci-electronics/mbpoll</remote-id>
   </upstream>
 </pkgmetadata>
