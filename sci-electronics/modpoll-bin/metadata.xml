@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>urs@linurs.org</email>
+    <name>modpoll</name>
+  </maintainer>
+  <longdescription>
+    modpoll is a command line modbus client that that can read from and write to a modbus server
+  </longdescription>
+</pkgmetadata>
