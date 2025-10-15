@@ -33,7 +33,7 @@ src_unpack() {
 
 src_prepare() {
 	einfo "Apply patch in ${FILESDIR}";
-	eapply -p1 "${FILESDIR}/nonpareil-0.79-r10.patch"
+	eapply -p1 "${FILESDIR}/nonpareil-0.79-r12.patch"
 	default  # Calls the default implementation, e.g., autoreconf
 }
 

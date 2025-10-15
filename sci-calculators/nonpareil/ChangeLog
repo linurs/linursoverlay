@@ -1,3 +1,7 @@
+nonpareil-0.79-r12
+==================
+new patched version to remove gcc error
+
 nonpareil-0.79-r10
 ==================
 new patched version for scons and gcc
