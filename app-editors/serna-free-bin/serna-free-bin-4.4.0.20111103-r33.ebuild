@@ -17,10 +17,10 @@ RESTRICT="fetch"
 
 DEPEND="
 	abi_x86_32? (
-		<=x11-libs/libXmu-1.2.1[abi_x86_32]
-		<=media-libs/freetype-2.13.999[abi_x86_32]
-		<=x11-libs/libXft-2.3.9[abi_x86_32]
-		<=x11-libs/libXinerama-1.1.5[abi_x86_32]
+		<=x11-libs/libXmu-1.2.1-r9999[abi_x86_32]
+		<=media-libs/freetype-2.14.1-r9999[abi_x86_32]
+		<=x11-libs/libXft-2.3.9-r9999[abi_x86_32]
+		<=x11-libs/libXinerama-1.1.5-r9999[abi_x86_32]
 		virtual/libcrypt[abi_x86_32]
 	)
 "
