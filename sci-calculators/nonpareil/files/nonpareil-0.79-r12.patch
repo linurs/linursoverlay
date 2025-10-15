@@ -1,6 +1,7 @@
-diff '--color=auto' --unified --recursive nonpareil-0.79/README nonpareil-0.79-r10-patch/README
+Only in nonpareil-0.79-r12: .sconsign.dblite
+diff '--color=auto' --unified --recursive nonpareil-0.79/README nonpareil-0.79-r12/README
 --- nonpareil-0.79/README	2008-08-24 02:37:34.000000000 +0200
-+++ nonpareil-0.79-r10-patch/README	2025-03-24 09:33:29.521759589 +0100
++++ nonpareil-0.79-r12/README	2025-10-15 19:48:09.271642226 +0200
 @@ -5,6 +5,7 @@
  -----------------------------------------------------------------------------
  
@@ -9,9 +10,9 @@ diff '--color=auto' --unified --recursive nonpareil-0.79/README nonpareil-0.79-r
  
  Release 0.79 removes the Voyager models pending a licensing update.
  Note that the ROM images of the Voyager calculators as present in
-diff '--color=auto' --unified --recursive nonpareil-0.79/SConstruct nonpareil-0.79-r10-patch/SConstruct
+diff '--color=auto' --unified --recursive nonpareil-0.79/SConstruct nonpareil-0.79-r12/SConstruct
 --- nonpareil-0.79/SConstruct	2008-08-24 02:37:34.000000000 +0200
-+++ nonpareil-0.79-r10-patch/SConstruct	2025-03-24 09:38:45.729873810 +0100
++++ nonpareil-0.79-r12/SConstruct	2025-10-15 19:48:09.271819300 +0200
 @@ -27,59 +27,24 @@
  # Options
  #-----------------------------------------------------------------------------
@@ -129,10 +130,19 @@ diff '--color=auto' --unified --recursive nonpareil-0.79/SConstruct nonpareil-0.
  	cross_build_env ['build_target_only'] = 1
  	SConscript ('src/SConscript',
  		    build_dir = 'build/' + env ['target'],
-Only in nonpareil-0.79-r10-patch: nonpareil.conf
-diff '--color=auto' --unified --recursive nonpareil-0.79/src/SConscript nonpareil-0.79-r10-patch/src/SConscript
+Only in nonpareil-0.79-r12/asm: 35.lst
+Only in nonpareil-0.79-r12/asm: 35.obj
+Only in nonpareil-0.79-r12/asm: 45.lst
+Only in nonpareil-0.79-r12/asm: 45.obj
+Only in nonpareil-0.79-r12/asm: 55.lst
+Only in nonpareil-0.79-r12/asm: 55.obj
+Only in nonpareil-0.79-r12/asm: 80.lst
+Only in nonpareil-0.79-r12/asm: 80.obj
+Only in nonpareil-0.79-r12/build: common
+Only in nonpareil-0.79-r12: nonpareil.conf
+diff '--color=auto' --unified --recursive nonpareil-0.79/src/SConscript nonpareil-0.79-r12/src/SConscript
 --- nonpareil-0.79/src/SConscript	2008-08-24 02:37:18.000000000 +0200
-+++ nonpareil-0.79-r10-patch/src/SConscript	2025-03-24 09:40:14.290253117 +0100
++++ nonpareil-0.79-r12/src/SConscript	2025-10-15 19:48:09.271944554 +0200
 @@ -79,7 +79,8 @@
  state_io_objs = [build_env.Object(src) for src in state_io_srcs];
  state_io_packages = "gtk+-2.0 gdk-2.0 gdk-pixbuf-2.0 glib-2.0 libxml-2.0"
@@ -224,9 +234,11 @@ diff '--color=auto' --unified --recursive nonpareil-0.79/src/SConscript nonparei
  
  nsim_conv_srcs = Split ("""nsim_conv.c
  	                   state_read_nsim.c state_write_nsim.c""")
-diff '--color=auto' --unified --recursive nonpareil-0.79/src/asm.h nonpareil-0.79-r10-patch/src/asm.h
+Only in nonpareil-0.79-r12/src: about.o
+Only in nonpareil-0.79-r12/src: arch.o
+diff '--color=auto' --unified --recursive nonpareil-0.79/src/asm.h nonpareil-0.79-r12/src/asm.h
 --- nonpareil-0.79/src/asm.h	2008-08-24 02:37:18.000000000 +0200
-+++ nonpareil-0.79-r10-patch/src/asm.h	2025-03-23 20:34:02.253542195 +0100
++++ nonpareil-0.79-r12/src/asm.h	2025-10-15 19:48:09.272066002 +0200
 @@ -22,7 +22,7 @@
  
  extern int arch;
@@ -236,9 +248,56 @@ diff '--color=auto' --unified --recursive nonpareil-0.79/src/asm.h nonpareil-0.7
  extern int lineno;
  extern int errors;
  
-diff '--color=auto' --unified --recursive nonpareil-0.79/src/printer.c nonpareil-0.79-r10-patch/src/printer.c
+Only in nonpareil-0.79-r12/src: asm.o
+Only in nonpareil-0.79-r12/src: asml.c
+Only in nonpareil-0.79-r12/src: asml.o
+Only in nonpareil-0.79-r12/src: asmy.c
+Only in nonpareil-0.79-r12/src: asmy.h
+Only in nonpareil-0.79-r12/src: asmy.o
+Only in nonpareil-0.79-r12/src: asmy.output
+Only in nonpareil-0.79-r12/src: bin2c
+Only in nonpareil-0.79-r12/src: bin2c.o
+Only in nonpareil-0.79-r12/src: calc_chooser.o
+Only in nonpareil-0.79-r12/src: canada_goose_wav.o
+Only in nonpareil-0.79-r12/src: casml.c
+Only in nonpareil-0.79-r12/src: casml.o
+Only in nonpareil-0.79-r12/src: casmy.c
+Only in nonpareil-0.79-r12/src: casmy.h
+Only in nonpareil-0.79-r12/src: casmy.o
+Only in nonpareil-0.79-r12/src: casmy.output
+Only in nonpareil-0.79-r12/src: coconut_lcd.o
+Only in nonpareil-0.79-r12/src: csim.o
+Only in nonpareil-0.79-r12/src: digit_ops.o
+Only in nonpareil-0.79-r12/src: dis_nut.o
+Only in nonpareil-0.79-r12/src: dis_woodstock.o
+Only in nonpareil-0.79-r12/src: display.o
+Only in nonpareil-0.79-r12/src: glib_async_queue_source.o
+Only in nonpareil-0.79-r12/src: goose.o
+Only in nonpareil-0.79-r12/src: helios.o
+Only in nonpareil-0.79-r12/src: helios_chargen.o
+Only in nonpareil-0.79-r12/src: keyboard.o
+Only in nonpareil-0.79-r12/src: kml.o
+Only in nonpareil-0.79-r12/src: kmll.c
+Only in nonpareil-0.79-r12/src: kmll.o
+Only in nonpareil-0.79-r12/src: kmly.c
+Only in nonpareil-0.79-r12/src: kmly.h
+Only in nonpareil-0.79-r12/src: kmly.o
+Only in nonpareil-0.79-r12/src: kmly.output
+Only in nonpareil-0.79-r12/src: lgoose.png
+Only in nonpareil-0.79-r12/src: lgoose_png.o
+Only in nonpareil-0.79-r12/src: mod1_file.o
+Only in nonpareil-0.79-r12/src: model.o
+Only in nonpareil-0.79-r12/src: modutil
+Only in nonpareil-0.79-r12/src: modutil.o
+Only in nonpareil-0.79-r12/src: nonpareil
+Only in nonpareil-0.79-r12/src: nonpareil_title.png
+Only in nonpareil-0.79-r12/src: nonpareil_title_png.o
+Only in nonpareil-0.79-r12/src: phineas.o
+Only in nonpareil-0.79-r12/src: pixbuf_util.o
+Only in nonpareil-0.79-r12/src: platform.o
+diff '--color=auto' --unified --recursive nonpareil-0.79/src/printer.c nonpareil-0.79-r12/src/printer.c
 --- nonpareil-0.79/src/printer.c	2008-08-24 02:37:18.000000000 +0200
-+++ nonpareil-0.79-r10-patch/src/printer.c	2025-03-24 10:01:35.526720991 +0100
++++ nonpareil-0.79-r12/src/printer.c	2025-10-15 19:48:09.272172638 +0200
 @@ -36,6 +36,7 @@
  #include "proc.h"
  #include "helios.h"
@@ -256,9 +315,12 @@ diff '--color=auto' --unified --recursive nonpareil-0.79/src/printer.c nonpareil
    png_set_IHDR (png_ptr,
  		info_ptr,
  		PRINTER_WIDTH,                 // width
-diff '--color=auto' --unified --recursive nonpareil-0.79/src/proc_nut.c nonpareil-0.79-r10-patch/src/proc_nut.c
+Only in nonpareil-0.79-r12/src: printer.o
+Only in nonpareil-0.79-r12/src: proc.o
+Only in nonpareil-0.79-r12/src: proc_classic.o
+diff '--color=auto' --unified --recursive nonpareil-0.79/src/proc_nut.c nonpareil-0.79-r12/src/proc_nut.c
 --- nonpareil-0.79/src/proc_nut.c	2008-08-24 02:37:18.000000000 +0200
-+++ nonpareil-0.79-r10-patch/src/proc_nut.c	2025-03-24 09:45:48.405967513 +0100
++++ nonpareil-0.79-r12/src/proc_nut.c	2025-10-15 19:48:09.272334328 +0200
 @@ -1768,7 +1768,7 @@
  
    for (addr = 0; addr < sim->max_ram; addr++)
@@ -268,9 +330,34 @@ diff '--color=auto' --unified --recursive nonpareil-0.79/src/proc_nut.c nonparei
  }
  
  
-diff '--color=auto' --unified --recursive nonpareil-0.79/src/util.c nonpareil-0.79-r10-patch/src/util.c
+Only in nonpareil-0.79-r12/src: proc_nut.o
+Only in nonpareil-0.79-r12/src: proc_woodstock.o
+Only in nonpareil-0.79-r12/src: release.o
+Only in nonpareil-0.79-r12/src: rgoose.png
+Only in nonpareil-0.79-r12/src: rgoose_png.o
+Only in nonpareil-0.79-r12/src: slide_switch.o
+Only in nonpareil-0.79-r12/src: sound.o
+diff '--color=auto' --unified --recursive nonpareil-0.79/src/state_read.c nonpareil-0.79-r12/src/state_read.c
+--- nonpareil-0.79/src/state_read.c	2008-08-24 02:37:18.000000000 +0200
++++ nonpareil-0.79-r12/src/state_read.c	2025-10-15 19:51:49.933711601 +0200
+@@ -30,6 +30,8 @@
+ #include <gdk/gdk.h>
+ #include <gtk/gtk.h>
+ 
++#include <libxml/parser.h>
++#include <libxml/tree.h>
+ #include <libxml/SAX.h>
+ 
+ #include "util.h"
+Only in nonpareil-0.79-r12/src: state_read.o
+Only in nonpareil-0.79-r12/src: state_write.o
+Only in nonpareil-0.79-r12/src: str2png
+Only in nonpareil-0.79-r12/src: str2png.o
+Only in nonpareil-0.79-r12/src: symtab.o
+Only in nonpareil-0.79-r12/src: uasm
+diff '--color=auto' --unified --recursive nonpareil-0.79/src/util.c nonpareil-0.79-r12/src/util.c
 --- nonpareil-0.79/src/util.c	2008-08-24 02:37:18.000000000 +0200
-+++ nonpareil-0.79-r10-patch/src/util.c	2025-03-24 09:46:40.554417135 +0100
++++ nonpareil-0.79-r12/src/util.c	2025-10-15 19:48:09.272521618 +0200
 @@ -129,18 +129,6 @@
    strcpy (*dest, src);
  }
@@ -290,9 +377,9 @@ diff '--color=auto' --unified --recursive nonpareil-0.79/src/util.c nonpareil-0.
  // strlncpy will copy up to n characters from src to dest, but not more than
  // one less than the maximum length of dest specified by the argument l.
  // Unlike strncpy(), strlncpy() will always leave dest NULL-terminated on
-diff '--color=auto' --unified --recursive nonpareil-0.79/src/util.h nonpareil-0.79-r10-patch/src/util.h
+diff '--color=auto' --unified --recursive nonpareil-0.79/src/util.h nonpareil-0.79-r12/src/util.h
 --- nonpareil-0.79/src/util.h	2008-08-24 02:37:18.000000000 +0200
-+++ nonpareil-0.79-r10-patch/src/util.h	2025-03-24 09:47:34.656788154 +0100
++++ nonpareil-0.79-r12/src/util.h	2025-10-15 19:48:09.272619470 +0200
 @@ -52,13 +52,6 @@
  
  void realloc_strcpy (char **dest, char *src);
@@ -307,3 +394,10 @@ diff '--color=auto' --unified --recursive nonpareil-0.79/src/util.h nonpareil-0.
  // strlncpy will copy up to n characters from src to dest, but not more than
  // one less than the maximum length of dest specified by the argument l.
  // Unlike strncpy(), strlncpy() will always leave dest NULL-terminated on
+Only in nonpareil-0.79-r12/src: util.o
+Only in nonpareil-0.79-r12/src: wasml.c
+Only in nonpareil-0.79-r12/src: wasml.o
+Only in nonpareil-0.79-r12/src: wasmy.c
+Only in nonpareil-0.79-r12/src: wasmy.h
+Only in nonpareil-0.79-r12/src: wasmy.o
+Only in nonpareil-0.79-r12/src: wasmy.output
