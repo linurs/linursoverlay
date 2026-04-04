@@ -1,8 +1,19 @@
 [Desktop Entry]
-Name=serna-free-bin
-Type=Application
+Categories=Office;
+Comment=Serna free is a WYSIWYG XML editor
 Comment=Serna free is a WYSIWYG XML editor
 Exec=serna-free-bin
-TryExec=serna-free-bin
+GenericName=
+GenericName=
 Icon=/usr/share/pixmaps/SernaIcon48.png
-Categories=Office;
+MimeType=
+Name=serna-free-bin
+Name=serna-free-bin
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+TryExec=serna-free-bin
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
